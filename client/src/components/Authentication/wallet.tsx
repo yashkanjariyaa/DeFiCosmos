@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import detectEthereumProvider from "@metamask/detect-provider";
 let injectedProvider = false;
 
@@ -14,6 +15,7 @@ const Wallet = () => {
   const [hasProvider, setHasProvider] = useState<boolean | null>(null);
   const initialState = { accounts: [] };
   const [wallet, setWallet] = useState(initialState);
+  const navigate = useNavigate();
   useEffect(() => {
     const getProvider = async () => {
       const provider = await detectEthereumProvider({ silent: true });
@@ -27,6 +29,8 @@ const Wallet = () => {
 
   const updateWallet = async (accounts: any) => {
     setWallet({ accounts });
+    localStorage.setItem('walletAddress', accounts[0]);
+    navigate('/home');
   };
   const handleConnect = async () => {
     let accounts = await window.ethereum.request({
