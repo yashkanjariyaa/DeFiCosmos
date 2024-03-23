@@ -171,10 +171,11 @@ const Signup = () => {
     <Stack spacing="6">
       <Stack spacing="5">
         <FormControl isRequired id="name">
-          <FormLabel htmlFor="name">Name</FormLabel>
+          <FormLabel htmlFor="name" color="yellow">Name</FormLabel>
           <Input
             type="text"
             name="name"
+            color={"white"}
             value={credentials.name}
             placeholder="Enter Your Name"
             onChange={(e) => handleCredentials(e)}
@@ -184,10 +185,11 @@ const Signup = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="email">
-          <FormLabel htmlFor="email">Email</FormLabel>
+          <FormLabel htmlFor="email" color="yellow">Email</FormLabel>
           <Input
             type="email"
             name="email"
+            color={"white"}
             value={credentials.email}
             placeholder="Enter Your Email"
             onChange={(e) => handleCredentials(e)}
@@ -197,7 +199,7 @@ const Signup = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="password">
-          <FormLabel htmlFor="password">Password</FormLabel>
+          <FormLabel htmlFor="password" color="yellow">Password</FormLabel>
           <InputGroup>
             <InputRightElement w="4.5rem">
               <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
@@ -207,6 +209,7 @@ const Signup = () => {
             <Input
               type={show ? "text" : "password"}
               name="password"
+              color={"white"}
               value={credentials.password}
               placeholder="Password"
               onChange={(e) => handleCredentials(e)}
@@ -217,7 +220,7 @@ const Signup = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="confirmPassword">
-          <FormLabel htmlFor="confirmPassword">Confirm Password</FormLabel>
+          <FormLabel htmlFor="confirmPassword" color="yellow">Confirm Password</FormLabel>
           <InputGroup>
             <InputRightElement w="4.5rem">
               <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
@@ -227,6 +230,7 @@ const Signup = () => {
             <Input
               type={show ? "text" : "password"}
               name="confirmPassword"
+              color={"white"}
               value={credentials.confirmPassword}
               placeholder="Confirm Password"
               onChange={(e) => handleCredentials(e)}
@@ -237,7 +241,7 @@ const Signup = () => {
 
       <Stack spacing="5">
         <FormControl id="pic">
-          <FormLabel htmlFor="pic">Upload your Picture</FormLabel>
+          <FormLabel htmlFor="pic" color="yellow">Upload your Picture</FormLabel>
 
           <InputGroup>
             <InputLeftElement pointerEvents="none">
@@ -247,6 +251,7 @@ const Signup = () => {
             <Input
               type="file"
               name="pic"
+              
               accept="image/*"
               isInvalid={true}
               errorBorderColor="#eaafc8"
@@ -255,6 +260,7 @@ const Signup = () => {
                   height: 10,
                   padding: 0,
                   mr: 4,
+                  color: "white",
                   background: "none",
                   border: "none",
                   fontWeight: "bold",
@@ -267,7 +273,7 @@ const Signup = () => {
       </Stack>
 
       <Button
-        colorScheme="blue"
+        colorScheme="pink"
         width="100%"
         style={{ marginTop: 15 }}
         onClick={() => submitHandler()}
