@@ -51,3 +51,11 @@
 button {
   margin-top: 0.5em;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle, #050213, #0d0422, #020205, #080819);
+  min-height: 100vh;
+ 
+}

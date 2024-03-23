@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Login, Signup } from "../components";
-
+import "./auth.css";
 const Home = () => {
   const navigate = useNavigate();
 
@@ -25,27 +25,27 @@ const Home = () => {
   }, [navigate]);
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="xl" >
       <Box
         d="flex"
         justifyContent="center"
         p={3}
-        bg="white"
+        
         w="100%"
         m="40px 0 15px 0"
         borderRadius="lg"
         borderWidth="1px"
       >
-        <Text fontSize="4xl" fontFamily="Work sans" textAlign="center">
-          Bit Chat
+        <Text className="text-pink" fontSize="4xl" textAlign="center">
+          DeFi Cosmos
         </Text>
       </Box>
 
-      <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
+      <Box w="100%" p={4} borderWidth="4px">
         <Tabs isFitted variant="soft-rounded">
           <TabList mb="1em">
-            <Tab>Login</Tab>
-            <Tab>Sign Up</Tab>
+            <Tab variant="solid">LOGIN</Tab>
+            <Tab variant="solid">SIGN UP</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>

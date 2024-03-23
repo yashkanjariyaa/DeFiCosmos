@@ -12,15 +12,15 @@ const ChatProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    setUser(userInfo);
+  // useEffect(() => {
+  //   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  //   setUser(userInfo);
 
-    if (!userInfo) {
-      navigate("/");
-    }
-    // eslint-disable-next-line
-  }, [navigate]);
+  //   if (!userInfo) {
+  //     navigate("/");
+  //   }
+  //   // eslint-disable-next-line
+  // }, [navigate]);
 
   return (
     <ChatContext.Provider
