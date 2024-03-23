@@ -31,7 +31,7 @@ const ScrollableChat = ({ messages, isTyping }) => {
         {/* If something inside the messages, render the messages */}
         {messages &&
           messages.map((message, index) => (
-            <div ref={scrollRef} key={message._id} style={{ display: "flex" }}>
+            <div ref={scrollRef} key={message._id} className={`message-bubble ${message.sender === user._id ? "sender" : "receiver"}`} style={{ display: "flex" }}>
               {(isSameSender(messages, message, index, user._id) ||
                 isLastMessage(messages, index, user._id)) && (
                 <Tooltip

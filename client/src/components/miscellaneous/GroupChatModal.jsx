@@ -18,6 +18,7 @@ import { useState } from "react";
 import { ChatState } from "../../context/ChatProvider";
 import UserBadgeItem from "../UserAvatar/UserBadgeItem";
 import UserListItem from "../UserAvatar/UserListItem";
+import "./groupChatModal.css";
 
 const GroupChatModal = ({ children }) => {
   const [groupChatName, setGroupChatName] = useState("");
@@ -141,9 +142,11 @@ const GroupChatModal = ({ children }) => {
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent className="modal-content">
+
           <ModalHeader
             display="flex"
+            color={"white"}
             justifyContent="center"
             fontSize="35px"
             fontFamily="Work sans"
@@ -154,6 +157,7 @@ const GroupChatModal = ({ children }) => {
           <ModalBody display="flex" flexDir="column" alignItems="center">
             <FormControl>
               <Input
+              color={"white"}
                 placeholder="Chat Name"
                 mb={3}
                 onChange={(e) => setGroupChatName(e.target.value)}
@@ -161,6 +165,7 @@ const GroupChatModal = ({ children }) => {
             </FormControl>
             <FormControl>
               <Input
+              color={"white"}
                 placeholder="Add Users eg: Rohit, Piyush, Aman"
                 mb={3}
                 onChange={(e) => handleSearch(e.target.value)}

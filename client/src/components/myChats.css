@@ -1,0 +1,30 @@
+/* Define keyframes for the kaleidoscope effect */
+@keyframes kaleidoscope {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+  
+  /* Apply the kaleidoscope effect to the chats */
+  .chat-box {
+    background: radial-gradient(circle at center, #000000 0%, #04081b 100%);
+    animation: kaleidoscope 20s infinite linear;
+  }
+  
+  /* Additional styling for the chat box */
+  .chat-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .chat-item:hover {
+    background-color: #38B2AC;
+    color: white;
+  }
+  

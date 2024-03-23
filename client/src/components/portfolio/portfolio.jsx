@@ -3,10 +3,10 @@ import CryptoPortfolio from "../home/tokenList";
 import { useNavigate } from "react-router-dom";
 import Map from "../home/map";
 import SmartContractsList from "../home/scList";
-import TokenHoldTimeVisualizer from "../home/holdTime";
-import WalletTraitsComponent from "../home/walletTraits";
-import WalletScores from "../home/walletScore";
-import WalletContactComponent from "../home/walletSocial";
+import TokenHoldTimeVisualizer from "../userProfile/holdTime";
+import WalletTraitsComponent from "../userProfile/walletTraits";
+import WalletScores from "../userProfile/walletScore";
+import WalletContactComponent from "../userProfile/walletSocial";
 const Portfolio = () => {
     const wallet = import.meta.env.VITE_WALLET;
     const navigate = useNavigate();
