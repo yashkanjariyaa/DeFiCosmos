@@ -1,17 +1,15 @@
 import React from "react";
-import CryptoPortfolio from "../components/home/portfolio";
+import Portfolio from "../components/portfolio/portfolio";
 import { useNavigate } from "react-router-dom";
-import Map from "../components/home/map";
 const Home = () => {
+    const wallet = import.meta.env.VITE_WALLET;
     const navigate = useNavigate();
     const handleChatButton = () => {
-        navigate('/chat');
+        navigate('/chats');
     }
     return(
         <div>
-            home
-            <CryptoPortfolio/>
-            <Map/>
+            <Portfolio/>
             <button onClick={handleChatButton}>Chat</button>
         </div>
     );

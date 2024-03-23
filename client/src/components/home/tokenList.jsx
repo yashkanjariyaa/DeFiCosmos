@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Plot from "react-plotly.js";
-import "./portfolio.css"; // Import CSS file for component styles
+import "./tokenList.css"; // Import CSS file for component styles
 
-const CryptoPortfolio = () => {
+const tokenList = () => {
   const [portfolioData, setPortfolioData] = useState(null);
   const [walletHoldings, setWalletHoldings] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -189,4 +189,4 @@ const CryptoPortfolio = () => {
   );
 };
 
-export default CryptoPortfolio;
+export default tokenList;
