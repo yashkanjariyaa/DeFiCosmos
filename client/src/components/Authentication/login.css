@@ -49,7 +49,7 @@ h1 {
   opacity: 0.8;
 }
 
-button {
+.login-container button {
   background: grey;
   color: white;
   float: right;
@@ -62,14 +62,14 @@ button {
   transition: background 0.3s; /* Add transition for color change */
 }
 
-button:hover,
+.login-container  button:hover,
 .createAcc:hover,
 .forgotAcc:hover {
   opacity: 1.0;
   background: pink; /* Change background color on hover */
 }
 
-button:active,
+.login-container button:active,
 .createAcc:active,
 .forgotAcc:active {
   background: yellow; /* Change background color on click */

@@ -83,6 +83,7 @@ body, html {
     height: 2px; /* Adjust size as needed */
     background-color: #ffffff; /* Adjust color as needed */
     border-radius: 50%; /* Ensures stars are circular */
+    z-index: 0;
   }
   
   /* Style for the container */

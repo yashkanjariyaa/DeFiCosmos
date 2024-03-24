@@ -57,6 +57,9 @@ const tokenList = () => {
       const responseData = await response.json();
       console.log(responseData);
       setWalletHoldings(responseData.data.walletHoldings);
+      const tokens = {
+        email : localStorage.getItem('userData')
+      }
     } catch (error) {
       console.error("Error fetching wallet holdings:", error);
     } finally {
@@ -108,103 +111,105 @@ const tokenList = () => {
 
   return (
     <div className="crypto-portfolio-container">
-  <div className="wallet-holdings-section flip-card">
-    <div className="flip-card-inner" onClick={() => handleCardFlip("wallet")}>
-      <div className="flip-card-front">
-        <h2>Wallet Holdings</h2>
-        <button
-          className="refresh-button"
-          onClick={fetchWalletHoldings}
-          disabled={isLoading}
+      <div className="wallet-holdings-section flip-card">
+        <div
+          className="flip-card-inner"
+          onClick={() => handleCardFlip("wallet")}
         >
-          {isLoading ? "Loading..." : "Refresh Wallet Holdings"}
-        </button>
-      </div>
-      <div className="flip-card-back">
-        {/* Content for the back of the card */}
-        {walletHoldings && (
-          <div>
-            <p className="wallet-address">
-              Wallet Address: {walletHoldings.walletAddress}
-            </p>
-            {Object.entries(walletHoldings).map(([network, tokens]) => (
-              <div key={network}>
-                {Array.isArray(tokens) && tokens.length > 0 ? (
-                  <>
-                    <h3 className="network-tokens">
-                      {network} Tokens: {tokens.length}
-                    </h3>
-                    <button
-                      className="network-button"
-                      onClick={() => handleNetworkClick(network)}
-                    >
-                      {expandedNetwork === network
-                        ? "Hide Tokens"
-                        : "Show Tokens"}
-                    </button>
-                    {expandedNetwork === network && (
-                      <ul className="token-list">
-                        {tokens.map((token) => (
-                          <li key={token.tokenAddress}>
-                            {token.tokenName} ({token.tokenSymbol}) - Chain:{" "}
-                            {token.chain}
-                          </li>
-                        ))}
-                      </ul>
+          <div className="flip-card-front">
+            <h2>Wallet Holdings</h2>
+            <button
+              className="refresh-button"
+              onClick={fetchWalletHoldings}
+              disabled={isLoading}
+            >
+              {isLoading ? "Loading..." : "Refresh Wallet Holdings"}
+            </button>
+          </div>
+          <div className="flip-card-back">
+            {/* Content for the back of the card */}
+            {walletHoldings && (
+              <div>
+                <p className="wallet-address">
+                  Wallet Address: {walletHoldings.walletAddress}
+                </p>
+                {Object.entries(walletHoldings).map(([network, tokens]) => (
+                  <div key={network}>
+                    {Array.isArray(tokens) && tokens.length > 0 ? (
+                      <>
+                        <h3 className="network-tokens">
+                          {network} Tokens: {tokens.length}
+                        </h3>
+                        <button
+                          className="network-button"
+                          onClick={() => handleNetworkClick(network)}
+                        >
+                          {expandedNetwork === network
+                            ? "Hide Tokens"
+                            : "Show Tokens"}
+                        </button>
+                        {expandedNetwork === network && (
+                          <ul className="token-list">
+                            {tokens.map((token) => (
+                              <li key={token.tokenAddress}>
+                                {token.tokenName} ({token.tokenSymbol}) - Chain:{" "}
+                                {token.chain}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </>
+                    ) : (
+                      <p>No tokens found for {network}</p>
                     )}
-                  </>
-                ) : (
-                  <p>No tokens found for {network}</p>
-                )}
+                  </div>
+                ))}
               </div>
-            ))}
+            )}
           </div>
-        )}
+        </div>
       </div>
-    </div>
-  </div>
-  <div className="token-distribution-chart flip-card">
-    <div className="flip-card-inner" onClick={() => handleCardFlip("distribution")}>
-      <div className="flip-card-front">
-        <h2>Token Distribution</h2>
-        <button
-          className="refresh-button"
-          onClick={fetchWalletHoldings}
-          disabled={isLoading}
+      <div className="token-distribution-chart flip-card">
+        <div
+          className="flip-card-inner"
+          onClick={() => handleCardFlip("distribution")}
         >
-          {isLoading ? "Loading..." : "Refresh Wallet Holdings"}
-        </button>
-      </div>
-      <div className="flip-card-back">
-        {/* Content for the back of the card */}
-        {walletHoldings && (
-          <div>
-            <p className="wallet-address">
-              Wallet Address: {walletHoldings.walletAddress}
-            </p>
-            <Plot
-              className="plotly-chart"
-              data={generateChartData()}
-              layout={{
-                width: 800,
-                height: 500,
-                title: "Token Distribution by Type and Network",
-                barmode: "stack",
-                xaxis: { title: "Network" },
-                yaxis: { title: "Number of Tokens" },
-              }}
-            />
+          <div className="flip-card-front">
+            <h2>Token Distribution</h2>
+            <button
+              className="refresh-button"
+              onClick={fetchWalletHoldings}
+              disabled={isLoading}
+            >
+              {isLoading ? "Loading..." : "Refresh Wallet Holdings"}
+            </button>
           </div>
-        )}
+          <div className="flip-card-back">
+            {/* Content for the back of the card */}
+            {walletHoldings && (
+              <div>
+                <p className="wallet-address">
+                  Wallet Address: {walletHoldings.walletAddress}
+                </p>
+                <Plot
+                  className="plotly-chart"
+                  data={generateChartData()}
+                  layout={{
+                    width: 800,
+                    height: 500,
+                    title: "Token Distribution by Type and Network",
+                    barmode: "stack",
+                    xaxis: { title: "Network" },
+                    yaxis: { title: "Number of Tokens" },
+                  }}
+                />
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-
-  
   );
-  
 };
 
 export default tokenList;

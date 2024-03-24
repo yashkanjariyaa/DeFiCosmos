@@ -125,7 +125,7 @@ const Login = () => {
                 value={credentials.password}
                 placeholder="Password"
                 onChange={(e) => handleCredentials(e)}
-                style={color='white'}
+                style={{color: 'white'}}
               />
             </InputGroup>
           </FormControl>

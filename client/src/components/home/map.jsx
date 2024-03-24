@@ -16,7 +16,7 @@ const Map = () => {
   };
 
   return (
-    <div className="vertical-navigation navigation-component">
+    <div className="navigation-component">
       <div className="heading">DeFiCosmos Map</div>
       <div className="sub-container">
         <div

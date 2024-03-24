@@ -6,6 +6,9 @@
     overflow-y: hidden;
     overflow-x: hidden;
 }
+.network-body div{
+    z-index: 1;
+}
 .arbitrum-sun{
     background: linear-gradient(to right,#6C192E, #CE6C46);
     height: 70vw;
