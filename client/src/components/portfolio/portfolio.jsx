@@ -1,7 +1,6 @@
 import React from "react";
 import CryptoPortfolio from "../home/tokenList";
 import { useNavigate } from "react-router-dom";
-import Map from "../home/map";
 import SmartContractsList from "../home/scList";
 import TokenHoldTimeVisualizer from "../home/holdTime";
 import WalletTraitsComponent from "../home/walletTraits";
@@ -17,7 +16,6 @@ const Portfolio = () => {
         <div>
             home
             <CryptoPortfolio/>
-            <Map/>
             <SmartContractsList walletAddress={wallet} lastNDays={90}/>
             <TokenHoldTimeVisualizer/>
             <WalletTraitsComponent walletAddress={wallet}/>

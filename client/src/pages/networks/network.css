@@ -1,0 +1,64 @@
+.network-body{
+    position: relative;
+    background: #000;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.arbitrum-sun{
+    background: linear-gradient(to right,#6C192E, #CE6C46);
+    height: 70vw;
+    width: 70vw;
+    border-radius: 100%;
+    position: absolute;
+    bottom: -50%;
+    left: 15%;
+}
+.ethereum-sun{
+    background: linear-gradient(to right, #E6155E ,#F27E18);
+    height: 70vw;
+    width: 70vw;
+    border-radius: 100%;
+    position: absolute;
+    bottom: -50%;
+    left: 15%;
+}
+.base-sun{
+    background: linear-gradient(to right, #F9C58D ,#F492F0);
+    height: 70vw;
+    width: 70vw;
+    border-radius: 100%;
+    position: absolute;
+    bottom: -50%;
+    left: 15%;
+}
+.bsc-sun{
+    background: linear-gradient(to right, #ff930f ,#fff95b);
+    height: 70vw;
+    width: 70vw;
+    border-radius: 100%;
+    position: absolute;
+    bottom: -50%;
+    left: 15%;
+}
+.optimism-sun{
+    background: linear-gradient(to right, #f5e6ad ,#f5e6ad);
+    height: 70vw;
+    width: 70vw;
+    border-radius: 100%;
+    position: absolute;
+    bottom: -50%;
+    left: 15%;
+}
+.polygon-sun{
+    background: linear-gradient(to right, #ff5282 ,#f28367);
+    height: 70vw;
+    width: 70vw;
+    border-radius: 100%;
+    position: absolute;
+    bottom: -50%;
+    left: 15%;
+}
+
+

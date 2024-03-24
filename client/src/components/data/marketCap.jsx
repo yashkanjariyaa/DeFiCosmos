@@ -1,37 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import Plot from 'react-plotly.js';
+import React, { useState, useEffect } from "react";
+import Plot from "react-plotly.js";
 
 const CryptoMarketCap = () => {
   const [chain, setChain] = useState("ETHEREUM");
   const [marketCapData, setMarketCapData] = useState([]);
 
+  const apiKey = import.meta.env.VITE_API_KEY;
   useEffect(() => {
     fetchMarketCapData();
   }, [chain]);
 
   const fetchMarketCapData = async () => {
     try {
-      const response = await fetch('https://dashboard.withblaze.app/api/chain-insights/market_cap', {
-        method: 'POST',
+      const url = new URL("https://dashboard.withblaze.app/api/chain-insights/market_cap");
+      url.searchParams.append("chain", chain);
+      url.searchParams.append("start_date", "2023-01-01");
+      url.searchParams.append("end_date", "2023-01-31");
+  
+      const response = await fetch(url, {
+        method: "GET",
         headers: {
-          'Authorization': 'API Key',
-          'Content-Type': 'application/json'
+          "x-api-key": '',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          "chain": chain,
-          "start_date": "2023-01-01",
-          "end_date": "2023-01-31"
-        })
       });
-
+  
       if (!response.ok) {
-        throw new Error('Failed to fetch data');
+        throw new Error("Failed to fetch data");
       }
-
+  
       const data = await response.json();
       setMarketCapData(data);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   };
 
@@ -40,8 +41,8 @@ const CryptoMarketCap = () => {
   };
 
   // Extracting date and market cap values for Plotly
-  const dates = marketCapData.map(entry => entry.date);
-  const marketCaps = marketCapData.map(entry => entry.market_cap);
+  const dates = marketCapData.map((entry) => entry.date);
+  const marketCaps = marketCapData.map((entry) => entry.market_cap);
 
   return (
     <div>
@@ -59,17 +60,17 @@ const CryptoMarketCap = () => {
           {
             x: dates,
             y: marketCaps,
-            type: 'scatter',
-            mode: 'lines+markers',
-            marker: { color: 'blue' },
-          }
+            type: "scatter",
+            mode: "lines+markers",
+            marker: { color: "blue" },
+          },
         ]}
         layout={{
           width: 800,
           height: 400,
           title: `Market Cap Over Time (${chain})`,
-          xaxis: { title: 'Date' },
-          yaxis: { title: 'Market Cap' },
+          xaxis: { title: "Date" },
+          yaxis: { title: "Market Cap" },
         }}
       />
     </div>
