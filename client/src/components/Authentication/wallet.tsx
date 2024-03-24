@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import detectEthereumProvider from "@metamask/detect-provider";
 let injectedProvider = false;
+import './wallet.css';
 
 if (typeof window.ethereum !== "undefined") {
   injectedProvider = true;
@@ -39,16 +40,40 @@ const Wallet = () => {
     updateWallet(accounts);
   };
   return (
-    <div className="wallet">
+    <div className="wallet" style={{ textAlign: "center" }}>
+      <h1 style={{ margin:"50px", fontSize:"50px", fontFamily: "Orbitron"}}>DeFi Cosmos</h1>
       <h2>Injected Provider {injectedProvider ? "DOES" : "DOES NOT"} Exist</h2>
-      {hasProvider && (
-        <button onClick={handleConnect}>Connect MetaMask Wallet</button>
-      )}
-      {wallet.accounts.length > 0 && (
-        <div>Wallet Accounts: {wallet.accounts[0]}</div>
-      )}
+      <div style={{ margin: "20px 0" }}>
+        {hasProvider && (
+          <button
+            style={{
+              backgroundColor: "#FF69B4",
+              color: "white",
+              padding: "10px 20px",
+              borderRadius: "5px",
+              marginRight: "10px",
+            }}
+            onClick={handleConnect}
+          >
+            Connect MetaMask Wallet
+          </button>
+        )}
+        {wallet.accounts.length > 0 && (
+          <button
+            style={{
+              backgroundColor: "#FF69B4",
+              color: "white",
+              padding: "10px 20px",
+              borderRadius: "5px",
+            }}
+          >
+            Wallet Accounts: {wallet.accounts[0]}
+          </button>
+        )}
+      </div>
     </div>
   );
+  
 };
 
 export default Wallet;
