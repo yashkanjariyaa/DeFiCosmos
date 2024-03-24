@@ -1,0 +1,17 @@
+.wallet-tags ul,
+.portfolio-values ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.wallet-tags li,
+.portfolio-values li {
+  margin-bottom: 8px;
+}
+
+.wallet-tags strong {
+  margin-right: 5px;
+}
+.wallet-details{
+    background: rgba(137, 113, 208, 0.1);
+}

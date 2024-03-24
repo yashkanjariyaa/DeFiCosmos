@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./walletSocial.css";
 
 const WalletContactComponent = () => {
   const [data, setData] = useState(null);
@@ -36,19 +37,29 @@ const WalletContactComponent = () => {
   }, []);
 
   return (
-    <div>
+    <div className="wallet-social-container">
       {data ? (
-        <div>
-          {data.walletAddress && <p>Wallet Address: {data.walletAddress}</p>}
-          {data.twitterHandle && <p>Twitter Handle: {data.twitterHandle}</p>}
-          {data.email && <p>Email: {data.email}</p>}
-          {data.telegramHandle[0] && <p>Telegram Handle: {data.telegramHandle}</p>}
+        <div className="bento-grid">
+          <div className="remaining-info" id="item-0">
+            <h3>Twitter Handle:</h3>
+            <p>{data.twitterHandle}</p>
+          </div>
+          <div className="remaining-info" id="item-1">
+            <h3>Email:</h3>
+            <p>{data.email}</p>
+          </div>
+          <div className="remaining-info" id="item-2">
+  <h3>Telegram Handle:</h3>
+  <p>{data.telegramHandle ? data.telegramHandle : "None"}</p>
+</div>
+
         </div>
       ) : (
         <p>Loading...</p>
       )}
     </div>
-  );
+);
+  
 };
 
 export default WalletContactComponent;
