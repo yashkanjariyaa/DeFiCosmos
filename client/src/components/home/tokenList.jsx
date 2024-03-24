@@ -108,7 +108,9 @@ const tokenList = () => {
 
   return (
     <div className="crypto-portfolio-container">
-      <div className="wallet-holdings-section">
+  <div className="wallet-holdings-section flip-card">
+    <div className="flip-card-inner" onClick={() => handleCardFlip("wallet")}>
+      <div className="flip-card-front">
         <h2>Wallet Holdings</h2>
         <button
           className="refresh-button"
@@ -117,6 +119,9 @@ const tokenList = () => {
         >
           {isLoading ? "Loading..." : "Refresh Wallet Holdings"}
         </button>
+      </div>
+      <div className="flip-card-back">
+        {/* Content for the back of the card */}
         {walletHoldings && (
           <div>
             <p className="wallet-address">
@@ -156,7 +161,11 @@ const tokenList = () => {
           </div>
         )}
       </div>
-      <div className="token-distribution-chart">
+    </div>
+  </div>
+  <div className="token-distribution-chart flip-card">
+    <div className="flip-card-inner" onClick={() => handleCardFlip("distribution")}>
+      <div className="flip-card-front">
         <h2>Token Distribution</h2>
         <button
           className="refresh-button"
@@ -165,6 +174,9 @@ const tokenList = () => {
         >
           {isLoading ? "Loading..." : "Refresh Wallet Holdings"}
         </button>
+      </div>
+      <div className="flip-card-back">
+        {/* Content for the back of the card */}
         {walletHoldings && (
           <div>
             <p className="wallet-address">
@@ -186,7 +198,13 @@ const tokenList = () => {
         )}
       </div>
     </div>
+  </div>
+</div>
+
+
+  
   );
+  
 };
 
 export default tokenList;

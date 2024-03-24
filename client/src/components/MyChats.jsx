@@ -61,8 +61,8 @@ const MyChats = ({ fetchAgain }) => {
       
       
       w={{ base: "100%", md: "31%" }}
-      borderRadius="lg"
-      borderWidth="1px"
+      borderRadius="1g"
+      borderWidth="3px"
     >
       <Box
         pb={3}
@@ -94,7 +94,7 @@ const MyChats = ({ fetchAgain }) => {
   display="flex"
   flexDir="column"
   p={3}
-  bg="#F8F8F8"
+  bg="black"
   w="100%"
   h="100%"
   borderRadius="lg"

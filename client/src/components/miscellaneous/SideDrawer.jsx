@@ -196,7 +196,7 @@ const SideDrawer = () => {
 </Menu>
 
           <Menu>
-            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+            <MenuButton as={Button} rightIcon={<ChevronDownIcon />} colorScheme={"black"}>
               <Avatar
                 name={user.name}
                 size="sm"
@@ -205,13 +205,17 @@ const SideDrawer = () => {
               />
             </MenuButton>
 
-            <MenuList>
+            <MenuList bg={"black"}>
               <ProfileModal user={user}>
-                <MenuItem>My Profile</MenuItem>
+              <MenuItem bg= {"black"} color={"white"}  _hover={"pink"}
+            // onMouseEnter={() => setSelectedOption("My Profile")}
+            // onMouseLeave={() => setSelectedOption(null)}
+          >My Profile</MenuItem>
               </ProfileModal>
 
               <MenuDivider />
-              <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+              <MenuItem  bg={"black"} color={"white"} _hover={"pink"} onClick={logoutHandler} onMouseEnter={() => setSelectedOption("Logout")}
+          onMouseLeave={() => setSelectedOption(null)}>Logout</MenuItem>
             </MenuList>
           </Menu>
         </div>

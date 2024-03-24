@@ -7,11 +7,14 @@
       filter: hue-rotate(360deg);
     }
   }
-  
-  /* Apply the kaleidoscope effect to the modal content */
-  .modal-content {
-    background: radial-gradient(circle at center, #000000 0%, #04081b 100%);
-    animation: kaleidoscope 20s infinite linear;
-    padding: 20px; /* Adjust padding as needed */
+  .modal-content{
+    margin: 0;
   }
   
+  /* Apply the kaleidoscope effect to the modal content */
+ .modal-modal, .modal-content, .modal-header, .modal-body , .modal-footer, .box-modal, .modal-button{
+    background: radial-gradient(circle at center, #000000 0%, #04081b 100%);
+    animation: kaleidoscope 20s infinite linear;
+    
+  }
+ 

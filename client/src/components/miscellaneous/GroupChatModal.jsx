@@ -140,11 +140,11 @@ const GroupChatModal = ({ children }) => {
     <>
       <span onClick={onOpen}>{children}</span>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
+      <Modal isOpen={isOpen} onClose={onClose} colorScheme={"white"} className="modal-modal">
+        
         <ModalContent className="modal-content">
 
-          <ModalHeader
+          <ModalHeader className="modal-header"
             display="flex"
             color={"white"}
             justifyContent="center"
@@ -154,7 +154,7 @@ const GroupChatModal = ({ children }) => {
             Create Group Chat
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody display="flex" flexDir="column" alignItems="center">
+          <ModalBody display="flex" flexDir="column" alignItems="center" className="modal-body">
             <FormControl>
               <Input
               color={"white"}
@@ -173,7 +173,7 @@ const GroupChatModal = ({ children }) => {
             </FormControl>
 
             {/* Selected users */}
-            <Box display="flex" flexWrap="wrap" w="100%">
+            <Box display="flex" flexWrap="wrap" w="100%" className="box-modal">
               {selectedUsers.map((user) => (
                 <UserBadgeItem
                   key={user._id}
@@ -196,8 +196,8 @@ const GroupChatModal = ({ children }) => {
             )}
           </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="blue" onClick={handleSubmit}>
+          <ModalFooter className="modal-footer">
+            <Button colorScheme="Black" onClick={handleSubmit}>
               Create Chat
             </Button>
           </ModalFooter>

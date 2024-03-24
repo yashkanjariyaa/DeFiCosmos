@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useEffect } from "react";
-import { Auth, Chat, WalletPage, Home, Data } from "./pages";
+import { Auth, Chat, WalletPage, Home, Data, UserProfile } from "./pages";
 import rocketImage from "./rocket.png";
 import "./App.css";
 
@@ -54,14 +54,15 @@ const App = () => {
           <Route path="/wallet" element={<WalletPage />} />
           <Route path="/home" element={<Home />} />
           <Route path="/data" element={<Data/>} />
+          <Route path="/user-profile" element={<UserProfile />} /> 
           {/* If the user enters an invalid path in the URL it automatically redirects them to the homepage */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
       {/* Rocket image */}
-      <div className="rocket-container">
+      {/* <div className="rocket-container">
         <img src={rocketImage} alt="Rocket" className="rocket" />
-      </div>
+      </div> */}
     </div>
   );
 };

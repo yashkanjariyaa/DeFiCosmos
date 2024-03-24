@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import "./map.css";
 
 const Map = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const Map = () => {
   };
 
   return (
-    <div>
+    <div className="vertical-navigation">
       <h1>Navigation Component</h1>
       <button onClick={() => handleNavigation('/polygon')}>Polygon</button>
       <button onClick={() => handleNavigation('/ethereum')}>Ethereum</button>
