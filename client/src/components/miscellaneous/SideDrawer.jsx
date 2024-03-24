@@ -17,12 +17,15 @@ import {
   Spinner,
   Text,
   Tooltip,
+  background,
+  color,
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./sideDrawer.css";
 
 import { ChatState } from "../../context/ChatProvider";
 import ProfileModal from "./ProfileModal";
@@ -58,6 +61,7 @@ const SideDrawer = () => {
     if (!search) {
       return toast({
         title: "Please Enter something in search",
+        colorScheme:"white",
         status: "warning",
         duration: 5000,
         isClosable: true,
@@ -128,7 +132,6 @@ const SideDrawer = () => {
       });
     }
   };
-
   return (
     <>
       {/* Chat Page UI */}
@@ -136,63 +139,64 @@ const SideDrawer = () => {
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        bg="white"
+        bgGradient="radial(ellipse at center, #000 0%, transparent 70%)"
         w="100%"
         p="5px 10px 5px 10px"
         borderWidth="5px"
       >
         {/* Search User Section */}
         <Tooltip label="Search users to chat" hasArrow placement="bottom-end">
-          <Button variant="ghost" onClick={onOpen}>
+          <Button variant="ghost" onClick={onOpen} _hover={{ backgroundColor: "#BF0451" }} >
             <i className="fas fa-search" />
-            <Text display={{ base: "none", md: "flex" }} paddingX="2.5">
+            <Text display={{ base: "none", md: "flex"}} paddingX="2.5" className="searchButtonText">
               Search User
             </Text>
           </Button>
         </Tooltip>
 
         {/* App Name Section */}
-        <Text fontSize="2xl" fontFamily="Work sans">
-          Bit Chat
+        <Text fontSize="2xl" fontFamily="Orbitron" color={"white"}>
+         DeFi Cosmos
         </Text>
 
         {/* User Profile and Bell Icon Section */}
         <div>
+        <Menu>
+  <MenuButton p="1" className="notification-badge-container" >
+    {/* Apply inline styling to make the icon pink */}
+    <BellIcon fontSize="2xl" m="1" color="#ff3d61" />
+
+    {notification.length > 0 && (
+      <span className="notification-badge">
+        {notification.length > 9 ? "9+" : notification.length}
+      </span>
+    )}
+  </MenuButton>
+
+  <MenuList>
+    {!notification.length && <Text pl="2">No New Messages</Text>}
+    {notification.map((notif) => (
+      <MenuItem
+        key={notif._id}
+        onClick={() => {
+          setSelectedChat(notif.chat[0]);
+          setNotification(notification.filter((n) => n !== notif));
+        }}
+      >
+        {notif.chat.isGroupChat
+          ? `New Message in ${notif.chat[0].chatName}`
+          : `New Message from ${getSender(
+              user,
+              notif.chat[0].users
+            )}`}
+        {/* Change chat[0] to chat from server side */}
+      </MenuItem>
+    ))}
+  </MenuList>
+</Menu>
+
           <Menu>
-            <MenuButton p="1" className="notification-badge-container">
-              <BellIcon fontSize="2xl" m="1" />
-
-              {notification.length > 0 && (
-                <span className="notification-badge">
-                  {notification.length > 9 ? "9+" : notification.length}
-                </span>
-              )}
-            </MenuButton>
-
-            <MenuList>
-              {!notification.length && <Text pl="2">No New Messages</Text>}
-              {notification.map((notif) => (
-                <MenuItem
-                  key={notif._id}
-                  onClick={() => {
-                    setSelectedChat(notif.chat[0]);
-                    setNotification(notification.filter((n) => n !== notif));
-                  }}
-                >
-                  {notif.chat.isGroupChat
-                    ? `New Message in ${notif.chat[0].chatName}`
-                    : `New Message from ${getSender(
-                        user,
-                        notif.chat[0].users
-                      )}`}
-                  {/* Change chat[0] to chat from server side */}
-                </MenuItem>
-              ))}
-            </MenuList>
-          </Menu>
-
-          <Menu>
-            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+            <MenuButton as={Button} rightIcon={<ChevronDownIcon />} colorScheme={"black"}>
               <Avatar
                 name={user.name}
                 size="sm"
@@ -201,54 +205,62 @@ const SideDrawer = () => {
               />
             </MenuButton>
 
-            <MenuList>
+            <MenuList bg={"black"}>
               <ProfileModal user={user}>
-                <MenuItem>My Profile</MenuItem>
+              <MenuItem bg= {"black"} color={"white"}  _hover={"pink"}
+            // onMouseEnter={() => setSelectedOption("My Profile")}
+            // onMouseLeave={() => setSelectedOption(null)}
+          >My Profile</MenuItem>
               </ProfileModal>
 
               <MenuDivider />
-              <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+              <MenuItem  bg={"black"} color={"white"} _hover={"pink"} onClick={logoutHandler} onMouseEnter={() => setSelectedOption("Logout")}
+          onMouseLeave={() => setSelectedOption(null)}>Logout</MenuItem>
             </MenuList>
           </Menu>
         </div>
       </Box>
+      <Drawer placement="left" isOpen={isOpen} onClose={onClose} className="space-background">
+  {/* <DrawerOverlay /> */}
+  <DrawerContent className="drawer-content">
+    <DrawerCloseButton />
+    <DrawerHeader className="drawer-header">Search Users</DrawerHeader>
 
-      <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Search Users</DrawerHeader>
+    <DrawerBody className="drawer-body">
+      {/* Search User */}
+      <Box display="flex" pb="2">
+        <Input
+          className="drawer-input"
+          placeholder="Search by name or email"
+          mr="2"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <Button className="drawer-button" onClick={handleSearch} >
+          Go
+        </Button>
+      </Box>
 
-          <DrawerBody>
-            {/* Search User */}
-            <Box display="flex" pb="2">
-              <Input
-                placeholder="Search by name or email"
-                mr="2"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <Button onClick={handleSearch}>Go</Button>
-            </Box>
+      {/* Populate Search Results */}
+      {loading ? (
+        <ChatLoading className="drawer-spinner" />
+      ) : (
+        searchResult?.map((user) => (
+          <UserListItem
+            key={user._id}
+            user={user}
+            handleFunction={() => accessChat(user._id)}
+          />
+        ))
+      )}
 
-            {/* Polulate Search Results */}
-            {loading ? (
-              <ChatLoading />
-            ) : (
-              searchResult?.map((user) => (
-                <UserListItem
-                  key={user._id}
-                  user={user}
-                  handleFunction={() => accessChat(user._id)}
-                />
-              ))
-            )}
+      {/* if the chat has been created, don't show the loading */}
+      {loadingChat && <Spinner className="drawer-spinner" ml="auto" d="flex" />}
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
 
-            {/* if the chat has been created, don't show the loading */}
-            {loadingChat && <Spinner ml="auto" d="flex" />}
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
+
     </>
   );
 };

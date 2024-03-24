@@ -18,6 +18,7 @@ import { useState } from "react";
 import { ChatState } from "../../context/ChatProvider";
 import UserBadgeItem from "../UserAvatar/UserBadgeItem";
 import UserListItem from "../UserAvatar/UserListItem";
+import "./groupChatModal.css";
 
 const GroupChatModal = ({ children }) => {
   const [groupChatName, setGroupChatName] = useState("");
@@ -139,11 +140,13 @@ const GroupChatModal = ({ children }) => {
     <>
       <span onClick={onOpen}>{children}</span>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader
+      <Modal isOpen={isOpen} onClose={onClose} colorScheme={"white"} className="modal-modal">
+        
+        <ModalContent className="modal-content">
+
+          <ModalHeader className="modal-header"
             display="flex"
+            color={"white"}
             justifyContent="center"
             fontSize="35px"
             fontFamily="Work sans"
@@ -151,9 +154,10 @@ const GroupChatModal = ({ children }) => {
             Create Group Chat
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody display="flex" flexDir="column" alignItems="center">
+          <ModalBody display="flex" flexDir="column" alignItems="center" className="modal-body">
             <FormControl>
               <Input
+              color={"white"}
                 placeholder="Chat Name"
                 mb={3}
                 onChange={(e) => setGroupChatName(e.target.value)}
@@ -161,6 +165,7 @@ const GroupChatModal = ({ children }) => {
             </FormControl>
             <FormControl>
               <Input
+              color={"white"}
                 placeholder="Add Users eg: Rohit, Piyush, Aman"
                 mb={3}
                 onChange={(e) => handleSearch(e.target.value)}
@@ -168,7 +173,7 @@ const GroupChatModal = ({ children }) => {
             </FormControl>
 
             {/* Selected users */}
-            <Box display="flex" flexWrap="wrap" w="100%">
+            <Box display="flex" flexWrap="wrap" w="100%" className="box-modal">
               {selectedUsers.map((user) => (
                 <UserBadgeItem
                   key={user._id}
@@ -191,8 +196,8 @@ const GroupChatModal = ({ children }) => {
             )}
           </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="blue" onClick={handleSubmit}>
+          <ModalFooter className="modal-footer">
+            <Button colorScheme="Black" onClick={handleSubmit}>
               Create Chat
             </Button>
           </ModalFooter>

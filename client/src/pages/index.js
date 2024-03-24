@@ -9,3 +9,5 @@ export { default as BaseSystem } from "./networks/baseSystem";
 export { default as BSCSystem } from "./networks/bscSystem";
 export { default as EthereumSystem } from "./networks/ethereumSystem";
 export { default as OptimismSystem } from "./networks/optimismSystem";
+
+export {default as UserProfile} from "./UserProfile";

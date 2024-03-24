@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useEffect } from "react";
-import { Auth, Chat, WalletPage, Home, Data, PolygonSystem, EthereumSystem, BaseSystem, BSCSystem, OptimismSystem, ArbitrumSystem } from "./pages";
+import { Auth, Chat, WalletPage, Home, Data, PolygonSystem, EthereumSystem, BaseSystem, BSCSystem, OptimismSystem, ArbitrumSystem, UserProfile } from "./pages";
 import "./App.css";
 
 const App = () => {
@@ -59,6 +59,7 @@ const App = () => {
           <Route path="/base" element={<BaseSystem/>} />
           <Route path="/optimism" element={<OptimismSystem/>} />
           <Route path="/ethereum" element={<EthereumSystem/>} />
+          <Route path="/user-profile" element={<UserProfile />} /> 
           {/* If the user enters an invalid path in the URL it automatically redirects them to the homepage */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

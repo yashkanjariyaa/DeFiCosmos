@@ -21,6 +21,7 @@ import {
 import { ChatState } from "../../context/ChatProvider";
 import UserBadgeItem from "../UserAvatar/UserBadgeItem";
 import UserListItem from "../UserAvatar/UserListItem";
+import "./updatedChatModal.css";
 
 const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
   const [groupChatName, setGroupChatName] = useState("");
@@ -227,7 +228,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
 
-        <ModalContent>
+        <ModalContent className="modal-content"> 
           <ModalHeader
             display="flex"
             justifyContent="center"
@@ -239,7 +240,8 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
 
           <ModalCloseButton />
 
-          <ModalBody>
+          <ModalBody className="modal-body">
+
             <Box w="100%" display="flex" flexWrap="wrap" pb="3">
               {selectedChat.users.map((user) => (
                 <UserBadgeItem

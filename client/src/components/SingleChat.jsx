@@ -170,6 +170,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           <Text
             fontSize={{ base: "28px", md: "30px" }}
             pb="3"
+            
             px="2"
             w="100%"
             fontFamily="Work sans"
@@ -200,15 +201,20 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           </Text>
 
           <Box
-            display="flex"
+           className="message-container"
+           display="flex"
+          
+           overflowY="scroll"
+           scrollbarWidth="none"
+            
             flexDir="column"
             justifyContent="flex-end"
             p={3}
-            bg="#E8E8E8"
+            bg="black"
             w="100%"
             h="100%"
             borderRadius="lg"
-            overflowY="hidden"
+           
           >
             {loading ? (
               <Spinner
@@ -248,6 +254,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           alignItems="center"
           justifyContent="center"
           h="100%"
+          color={"white"}
         >
           <Text fontSize="3xl" pb="3" fontFamily="Work sans">
             Click on a user to start chatting

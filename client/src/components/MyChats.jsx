@@ -8,7 +8,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
-
+import "./myChats.css";
 import { ChatState } from "../context/ChatProvider";
 import ChatLoading from "./ChatLoading";
 import { getSender } from "../config/ChatLogics";
@@ -56,19 +56,22 @@ const MyChats = ({ fetchAgain }) => {
     <Box
       display={{ base: selectedChat ? "none" : "flex", md: "flex" }}
       flexDir="column"
+      background={"black"}
       alignItems="center"
-      p={3}
-      bg="white"
+      
+      
       w={{ base: "100%", md: "31%" }}
-      borderRadius="lg"
-      borderWidth="1px"
+      borderRadius="1g"
+      borderWidth="3px"
     >
       <Box
         pb={3}
         px={3}
         fontSize={{ base: "28px", md: "30px" }}
         fontFamily="Work sans"
+        color={"white"}
         display="flex"
+       background={"black"}
         w="100%"
         justifyContent="space-between"
         alignItems="center"
@@ -77,6 +80,7 @@ const MyChats = ({ fetchAgain }) => {
         <GroupChatModal>
           <Button
             display="flex"
+            backgroundColor={"#ff3d61"}
             fontSize={{ base: "17px", md: "10px", lg: "17px" }}
             rightIcon={<AddIcon />}
           >
@@ -86,40 +90,37 @@ const MyChats = ({ fetchAgain }) => {
       </Box>
 
       <Box
-        display="flex"
-        flexDir="column"
-        p={3}
-        bg="#F8F8F8"
-        w="100%"
-        h="100%"
-        borderRadius="lg"
-        overflowY="hidden"
-      >
-        {chats ? (
-          <Stack overflowY="scroll">
-            {chats.map((chat) => (
-              <Box
-                onClick={() => setSelectedChat(chat)}
-                cursor="pointer"
-                bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
-                color={selectedChat === chat ? "white" : "black"}
-                px={3}
-                py={2}
-                borderRadius="lg"
-                key={chat._id}
-              >
-                <Text>
-                  {!chat.isGroupChat
-                    ? getSender(loggedUser, chat.users)
-                    : chat.chatName}
-                </Text>
-              </Box>
-            ))}
-          </Stack>
-        ) : (
-          <ChatLoading />
-        )}
-      </Box>
+  className="chat-box"
+  display="flex"
+  flexDir="column"
+  p={3}
+  bg="black"
+  w="100%"
+  h="100%"
+  borderRadius="lg"
+  overflowY="hidden"
+>
+  {chats ? (
+    <Stack overflowY="scroll">
+      {chats.map((chat) => (
+        <Box
+          className="chat-item"
+          onClick={() => setSelectedChat(chat)}
+          key={chat._id}
+        >
+          <Text>
+            {!chat.isGroupChat
+              ? getSender(loggedUser, chat.users)
+              : chat.chatName}
+          </Text>
+        </Box>
+      ))}
+    </Stack>
+  ) : (
+    <ChatLoading />
+  )}
+</Box>
+
     </Box>
   );
 };

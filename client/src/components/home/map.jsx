@@ -6,7 +6,8 @@ import Arbitrum from "../space/arbitrum";
 import Ethereum from "../space/ethereum";
 import Base from "../space/base";
 import Optimism from "../space/optimism";
-import BSC from "../space/bsc";
+import BSC from "../space/bsc";import "./map.css";
+
 const Map = () => {
   const navigate = useNavigate();
 
@@ -15,7 +16,7 @@ const Map = () => {
   };
 
   return (
-    <div className="navigation-component">
+    <div className="vertical-navigation navigation-component">
       <div className="heading">DeFiCosmos Map</div>
       <div className="sub-container">
         <div

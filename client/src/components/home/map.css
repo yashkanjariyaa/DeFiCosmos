@@ -63,3 +63,13 @@
   left: 60%;
 }
 
+.vertical-navigation {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+  }
+  
+  .vertical-navigation button {
+    margin-bottom: 10px;
+  }
+  

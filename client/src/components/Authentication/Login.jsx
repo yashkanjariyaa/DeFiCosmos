@@ -7,6 +7,7 @@ import {
   InputGroup,
   InputRightElement,
   Stack,
+  color,
   useToast,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
@@ -124,6 +125,7 @@ const Login = () => {
                 value={credentials.password}
                 placeholder="Password"
                 onChange={(e) => handleCredentials(e)}
+                style={color='white'}
               />
             </InputGroup>
           </FormControl>

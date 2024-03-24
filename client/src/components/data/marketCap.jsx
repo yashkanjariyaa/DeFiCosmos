@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Plot from "react-plotly.js";
+import './marketCap.css'; // Import CSS file for component styles
 
 const CryptoMarketCap = () => {
   const [chain, setChain] = useState("ETHEREUM");
@@ -45,34 +46,45 @@ const CryptoMarketCap = () => {
   const marketCaps = marketCapData.map((entry) => entry.market_cap);
 
   return (
-    <div>
-      <h2>Crypto Market Capitalization</h2>
-      <div>
-        <button onClick={() => handleChangeChain("ETHEREUM")}>Ethereum</button>
-        <button onClick={() => handleChangeChain("ARBITRUM")}>Arbitrum</button>
-        <button onClick={() => handleChangeChain("BSC")}>BSC</button>
-        <button onClick={() => handleChangeChain("POLYGON")}>Polygon</button>
-        <button onClick={() => handleChangeChain("BASE")}>Base</button>
-        <button onClick={() => handleChangeChain("OPTIMISM")}>Optimism</button>
-      </div>
+    <div className="crypto-market-container">
+      <h1>Crypto Market Capitalization</h1>
+      <div className='graphs-buttons'>
+      
       <Plot
-        data={[
-          {
+        className="plotly-chart"
+        data={{
             x: dates,
             y: marketCaps,
             type: "scatter",
             mode: "lines+markers",
-            marker: { color: "blue" },
-          },
-        ]}
+            
+            marker: { color: "yellow" }, // Bright color for markers
+            line: { color: 'cyan' }, // Bright color for lines
+            textfont: { color: 'green' }, // Bright color for text
+          }}
         layout={{
           width: 800,
           height: 400,
-          title: `Market Cap Over Time (${chain})`,
-          xaxis: { title: "Date" },
-          yaxis: { title: "Market Cap" },
+          title:  `<span style="color: pink;">Market Cap Over Time (${chain})</span>`,
+          xaxis: { title: `<span style="color: pink;">Date </span>` ,
+          tickfont: { color: 'pink' }, // Set the color of x-axis labels
+          gridcolor: 'yellow',},
+          yaxis: { title: `<span style="color: pink;">Market Cap</span>`,
+          tickfont: { color: 'pink' }, // Set the color of x-axis labels
+          gridcolor: 'yellow', },
+          plot_bgcolor: 'black',
+          paper_bgcolor: 'black',
         }}
       />
+      <div className="button-container">
+        <button className="gradient-button" onClick={() => handleChangeChain("ETHEREUM")}>Ethereum</button>
+        <button className="gradient-button" onClick={() => handleChangeChain("ARBITRUM")}>Arbitrum</button>
+        <button className="gradient-button" onClick={() => handleChangeChain("BSC")}>BSC</button>
+        <button className="gradient-button" onClick={() => handleChangeChain("POLYGON")}>Polygon</button>
+        <button className="gradient-button" onClick={() => handleChangeChain("BASE")}>Base</button>
+        <button className="gradient-button" onClick={() => handleChangeChain("OPTIMISM")}>Optimism</button>
+      </div>
+    </div>
     </div>
   );
 };
