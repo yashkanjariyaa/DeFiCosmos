@@ -53,7 +53,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
     try {
       setLoading(true);
 
-      const response = await fetch("/api/chat/groupremove", {
+      const response = await fetch("/server/api/chat/groupremove", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -113,7 +113,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
     try {
       setLoading(true);
 
-      const response = await fetch("/api/chat/groupadd", {
+      const response = await fetch("/server/api/chat/groupadd", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -151,7 +151,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
     try {
       setRenameLoading(true);
 
-      const response = await fetch("/api/chat/rename", {
+      const response = await fetch("/server/api/chat/rename", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -194,7 +194,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
     try {
       setLoading(true);
 
-      const response = await fetch(`/api/user?search=${search}`, {
+      const response = await fetch(`/server/api/user?search=${search}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${user.token}`,

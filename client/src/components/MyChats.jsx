@@ -23,7 +23,7 @@ const MyChats = ({ fetchAgain }) => {
 
   const fetchChats = async () => {
     try {
-      const response = await fetch(`/api/chat`, {
+      const response = await fetch(`/server/api/chat`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${user.token}`,

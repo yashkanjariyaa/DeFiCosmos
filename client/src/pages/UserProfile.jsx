@@ -5,6 +5,7 @@ import WalletSocial from '../components/userProfile/walletSocial'; // Adjust imp
 import WalletTraits from '../components/userProfile/walletTraits'; // Adjust import path
 
 import "./userProfile.css"; // Adjust CSS import path
+import Portfolio from '../components/portfolio/portfolio';
 
 
 
@@ -45,6 +46,9 @@ const imageLink = "./rocket2.png";
     <div className="wallet-traits">
       <h2>Wallet Traits</h2>
       <WalletTraits />
+    </div>
+    <div className='portfolio-container'>
+    <Portfolio/>
     </div>
   </div>
 </div>

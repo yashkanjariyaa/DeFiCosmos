@@ -1,0 +1,31 @@
+.navbar {
+    background-color: #2196F3; /* Change the background color as needed */
+    padding: 10px; /* Adjust padding as needed */
+}
+
+.nav-link {
+    color: white; /* Change the color of the links */
+    font-weight: bold; /* Make the links bold */
+    margin-right: 10px; /* Adjust margin between links */
+}
+
+.nav-link:hover {
+    text-decoration: underline; /* Underline the links on hover */
+}
+
+.input-field {
+    margin: 0; /* Remove default margin */
+}
+
+.input-field input[type="search"] {
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    padding: 5px; /* Adjust padding */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+    background-color: #fff; /* Set background color */
+    width: 200px; /* Adjust width as needed */
+}
+
+.input-field input[type="search"]:focus {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add shadow on focus */
+}

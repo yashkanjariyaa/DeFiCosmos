@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const HoldingSchema = mongoose.Schema(
   {
     id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    oortfolio : { type: Object, required : true }
+    address: { type: String, unique: true },
+    holdings: { type: Object, required: true }, 
   },
   { timestamps: true }
 );

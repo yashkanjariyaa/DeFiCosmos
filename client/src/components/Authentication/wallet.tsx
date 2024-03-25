@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import detectEthereumProvider from "@metamask/detect-provider";
 let injectedProvider = false;
-import './wallet.css';
+import "./wallet.css";
 
 if (typeof window.ethereum !== "undefined") {
   injectedProvider = true;
@@ -27,11 +27,37 @@ const Wallet = () => {
 
     getProvider();
   }, []);
-
+  const storeWallet = (address) => {
+    fetch("/server/api/storeWallet", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: localStorage.getItem('userInfo')._id,
+        address: address,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Handle success response
+        console.log("Address updated successfully:", data);
+      })
+      .catch((error) => {
+        // Handle error
+        console.error("There was a problem updating the address:", error);
+      });
+  };
   const updateWallet = async (accounts: any) => {
     setWallet({ accounts });
-    localStorage.setItem('walletAddress', accounts[0]);
-    navigate('/home');
+    localStorage.setItem("walletAddress", accounts[0]);
+    storeWallet(accounts[0]);
+    navigate("/home");
   };
   const handleConnect = async () => {
     let accounts = await window.ethereum.request({
@@ -41,7 +67,9 @@ const Wallet = () => {
   };
   return (
     <div className="wallet" style={{ textAlign: "center" }}>
-      <h1 style={{ margin:"50px", fontSize:"50px", fontFamily: "Orbitron"}}>DeFi Cosmos</h1>
+      <h1 style={{ margin: "50px", fontSize: "50px", fontFamily: "Orbitron" }}>
+        DeFi Cosmos
+      </h1>
       <h2>Injected Provider {injectedProvider ? "DOES" : "DOES NOT"} Exist</h2>
       <div style={{ margin: "20px 0" }}>
         {hasProvider && (
@@ -73,7 +101,6 @@ const Wallet = () => {
       </div>
     </div>
   );
-  
 };
 
 export default Wallet;

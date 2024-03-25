@@ -1,9 +1,26 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useEffect } from "react";
-import { Auth, Chat, WalletPage, Home, Data, PolygonSystem, EthereumSystem, BaseSystem, BSCSystem, OptimismSystem, ArbitrumSystem, UserProfile } from "./pages";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {
+  Auth,
+  Chat,
+  WalletPage,
+  Home,
+  Data,
+  PolygonSystem,
+  EthereumSystem,
+  BaseSystem,
+  BSCSystem,
+  OptimismSystem,
+  ArbitrumSystem,
+  UserProfile,
+} from "./pages";
 import "./App.css";
+import Navbar from "./components/navbar";
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const location = useLocation();
+
   useEffect(() => {
     // Function to generate a random number between min and max (inclusive)
     function getRandomNumber(min, max) {
@@ -43,31 +60,30 @@ const App = () => {
     // Call the function to create stars and asteroids
     createStarsAndAsteroids(50); // You can adjust the number of elements as needed
   }, []);
+
+  const isNotHomeOrChatsRoute = location.pathname !== "/" && location.pathname !== "/chats" && location.pathname !== "/wallet";
+  
   return (
     <div className="app-container stars">
-      {/* Add stars and asteroids dynamically in the App component */}
+      {isNotHomeOrChatsRoute && isLoggedIn && <Navbar/>}
       <div className="App">
         <Routes>
           <Route path="/" element={<Auth />} />
           <Route path="/chats" element={<Chat />} />
           <Route path="/wallet" element={<WalletPage />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/data" element={<Data/>} />
-          <Route path="/polygon" element={<PolygonSystem/>} />
-          <Route path="/arbitrum" element={<ArbitrumSystem/>} />
-          <Route path="/bsc" element={<BSCSystem/>} />
-          <Route path="/base" element={<BaseSystem/>} />
-          <Route path="/optimism" element={<OptimismSystem/>} />
-          <Route path="/ethereum" element={<EthereumSystem/>} />
-          <Route path="/user-profile" element={<UserProfile />} /> 
+          <Route path="/data" element={<Data />} />
+          <Route path="/polygon" element={<PolygonSystem />} />
+          <Route path="/arbitrum" element={<ArbitrumSystem />} />
+          <Route path="/bsc" element={<BSCSystem />} />
+          <Route path="/base" element={<BaseSystem />} />
+          <Route path="/optimism" element={<OptimismSystem />} />
+          <Route path="/ethereum" element={<EthereumSystem />} />
+          <Route path="/user" element={<UserProfile />} />
           {/* If the user enters an invalid path in the URL it automatically redirects them to the homepage */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
-      {/* Rocket image */}
-      {/* <div className="rocket-container">
-        <img src={rocketImage} alt="Rocket" className="rocket" />
-      </div> */}
     </div>
   );
 };

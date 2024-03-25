@@ -10,7 +10,7 @@ const Chat = () => {
 
   return (
     <div style={{ width: "100%" }}>
-      {user && <SideDrawer />}
+      {user && <SideDrawer/>}
       <Box
         display="flex"
         justifyContent="space-between"

@@ -42,7 +42,7 @@ const GroupChatModal = ({ children }) => {
     try {
       setLoading(true);
 
-      const response = await fetch(`/api/user?search=${search}`, {
+      const response = await fetch(`/server/api/user?search=${search}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -78,7 +78,7 @@ const GroupChatModal = ({ children }) => {
     }
 
     try {
-      const response = await fetch("/api/chat/group", {
+      const response = await fetch("/server/api/chat/group", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${user.token}`,

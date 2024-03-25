@@ -24,7 +24,7 @@ import {
 } from "@chakra-ui/react";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./sideDrawer.css";
 
 import { ChatState } from "../../context/ChatProvider";
@@ -73,7 +73,7 @@ const SideDrawer = () => {
     try {
       setLoading(true);
 
-      const response = await fetch(`/api/user?search=${search}`, {
+      const response = await fetch(`/server/api/user?search=${search}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -84,6 +84,7 @@ const SideDrawer = () => {
       setLoading(false);
       setSearchResult(data);
     } catch (error) {
+      console.log(error);
       setLoading(false);
       return toast({
         title: "Error Occured!",
@@ -101,7 +102,7 @@ const SideDrawer = () => {
     try {
       setLoadingChat(true);
 
-      const response = await fetch(`/api/chat`, {
+      const response = await fetch(`/server/api/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -158,7 +159,8 @@ const SideDrawer = () => {
         <Text fontSize="2xl" fontFamily="Orbitron" color={"white"}>
          DeFi Cosmos
         </Text>
-
+        {/* <Link to='/chats' className="navlink">Chats</Link>
+        <Link to='/home' className="navlink">Home</Link> */}
         {/* User Profile and Bell Icon Section */}
         <div>
         <Menu>
