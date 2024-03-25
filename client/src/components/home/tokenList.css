@@ -42,7 +42,7 @@
 
 
 .flip-card-back {
-  background: linear-gradient(to bottom right, #04030f, #1c1b37);
+  background: linear-gradient(to bottom right, #181505, #1c1b37);
   color: #fff;
   transform: rotateY(180deg);
 }

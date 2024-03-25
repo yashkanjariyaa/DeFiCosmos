@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./wallettraits.css";
 
 function WalletTraitsComponent({ walletAddress }) {
     const [data, setData] = useState(null);
@@ -76,27 +77,32 @@ function WalletTraitsComponent({ walletAddress }) {
     if (!data) return null;
 
     return (
-        <div>
-            <h2>Wallet Address: {data.walletAddress}</h2>
-            <h3>Wallet Tags:</h3>
-            <ul>
-                {Object.keys(data.walletTags).map(tagType => (
-                    <li key={tagType}>
-                        <strong>{tagType}:</strong> {data.walletTags[tagType].join(', ')}
-                    </li>
-                ))}
-            </ul>
-            <h3>Portfolio Values:</h3>
-            <ul>
-                <li>Ethereum: {data.ethereumTokenPortfolioValue}</li>
-                <li>Polygon: {data.polygonTokenPortfolioValue}</li>
-                <li>NFT: {data.nftPortfolioValue}</li>
-                <li>Arbitrum: {data.arbitrumTokenPortfolioValue}</li>
-                <li>BSC: {data.bscTokenPortfolioValue}</li>
-                <li>Base: {data.baseTokenPortfolioValue}</li>
-                <li>Optimism: {data.optimismTokenPortfolioValue}</li>
-            </ul>
+        <div className="wallet-details">
+        <h2 style={{ marginBottom: '10px' }}>Wallet Address: {data.walletAddress}</h2>
+        <div className="wallet-tags">
+          <h3>Wallet Tags:</h3>
+          <ul>
+            {Object.keys(data.walletTags).map((tagType) => (
+              <li key={tagType}>
+                <strong>{tagType}:</strong> {data.walletTags[tagType].join(', ')}
+              </li>
+            ))}
+          </ul>
         </div>
+        <div className="portfolio-values">
+          <h3>Portfolio Values:</h3>
+          <ul>
+            <li>Ethereum: {data.ethereumTokenPortfolioValue}</li>
+            <li>Polygon: {data.polygonTokenPortfolioValue}</li>
+            <li>NFT: {data.nftPortfolioValue}</li>
+            <li>Arbitrum: {data.arbitrumTokenPortfolioValue}</li>
+            <li>BSC: {data.bscTokenPortfolioValue}</li>
+            <li>Base: {data.baseTokenPortfolioValue}</li>
+            <li>Optimism: {data.optimismTokenPortfolioValue}</li>
+          </ul>
+        </div>
+      </div>
+      
     );
 }
 

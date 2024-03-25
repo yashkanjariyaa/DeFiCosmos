@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./holdtime.css";
 
 const TokenHoldTimeVisualizer = () => {
   const [averageHoldTime, setAverageHoldTime] = useState(null);
@@ -50,7 +51,7 @@ const TokenHoldTimeVisualizer = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div>
+    <div className="average-hold-time">
       {averageHoldTime && (
         <p>Average Token Hold Time: {averageHoldTime}</p>
       )}
