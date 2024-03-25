@@ -49,6 +49,7 @@ To get started with DeFi Cosmos, follow these steps:
 - **Sign Up/Login**: Create a new account or log in using your Metamask wallet.
 - **View Profile**: Explore your personalized profile to see average hold time, wallet traits, and social handles.
 - **Check Wallet Holdings**: Access details about your wallet holdings and token distributions.
+- **View Wallet Score and Portfolio**: Checkout Wallet Score and investments in crypto, NFTS, etc. of other users on different networks.
 - **Join Chat Rooms**: Click on specific blockchain networks to enter dedicated chat rooms and engage with other users.
 
 ## Contributors
@@ -57,9 +58,8 @@ To get started with DeFi Cosmos, follow these steps:
 - Vaishnavi Shridhar - [@vaishnavi23-03 ](https://github.com/vaishnavi23-03)
 
 ## Credits
-
 This project was developed as part of the Blaze API Hackathon, utilizing the Blaze API for various functionalities.
-
+All the Wallet Intelligence and Identity APIs are used for this project.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
