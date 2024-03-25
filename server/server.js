@@ -19,7 +19,7 @@ app.use("/api/message", messageRoutes);
 app.use("/api/store", dataRoutes);
 app.get("/api/search", searchController);
 app.post("/api/storeWallet", storeWalletController);
-app.get("/api/getUser", getUserInfoAndAddress);
+app.get("/api/getUser/:id", getUserInfoAndAddress);
 
 // --------------------------DEPLOYMENT------------------------------
 
