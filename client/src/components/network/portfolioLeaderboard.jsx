@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import "./portfolioLeaderboard.css";
 const LeaderboardCard = () => {
   const [portfolios, setPortfolios] = useState([]);
   const [showMore, setShowMore] = useState(false);

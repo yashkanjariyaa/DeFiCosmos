@@ -10,6 +10,30 @@ const tokenList = () => {
   const walletAddress = "0x690B9A9E9aa1C9dB991C7721a92d351Db4FaC990";
   const apiKey = import.meta.env.VITE_API_KEY;
 
+  const storeHoldings = (data) => {
+    fetch("/server/api/store/holdings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // Tell the server that you're sending JSON data
+      },
+      body: JSON.stringify(data), // Convert the data to a JSON string
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json(); // Parse the JSON response from the server
+      })
+      .then((data) => {
+        // Handle the response data if needed
+        console.log("Data stored successfully:", data);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the fetch request
+        console.error("Error storing data:", error);
+      });
+  };
+
   const fetchWalletHoldings = async () => {
     setIsLoading(true);
     try {
@@ -57,9 +81,12 @@ const tokenList = () => {
       const responseData = await response.json();
       console.log(responseData);
       setWalletHoldings(responseData.data.walletHoldings);
-      const tokens = {
-        email : localStorage.getItem('userData')
-      }
+      const holdings = {
+        id: localStorage.getItem('userInfo')._id,
+        address: localStorage.getItem('walletAddress'),
+        walletHoldings: walletHoldings,
+      };
+      storeHoldings(holdings);
     } catch (error) {
       console.error("Error fetching wallet holdings:", error);
     } finally {

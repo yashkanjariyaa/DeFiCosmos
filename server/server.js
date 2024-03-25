@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const path = require("path");
 
 const { connectToMongoDB } = require("./config");
-const { userRoutes, chatRoutes, messageRoutes } = require("./routes");
+const { userRoutes, chatRoutes, messageRoutes, dataRoutes } = require("./routes");
 const { notFound, errorHandler } = require("./middleware");
 
 const app = express(); // Use express js in our app
@@ -14,6 +14,7 @@ connectToMongoDB(); // Connect to Database
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
+app.use("/api/store", dataRoutes);
 
 // --------------------------DEPLOYMENT------------------------------
 

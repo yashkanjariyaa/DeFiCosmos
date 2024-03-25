@@ -58,7 +58,6 @@ const Login = () => {
         }),
       });
       const data = await response.json();
-
       toast({
         title: data.message,
         status: !data.success ? "error" : "success",
