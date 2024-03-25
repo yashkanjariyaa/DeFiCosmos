@@ -29,6 +29,10 @@ const Navbar = () => {
     }
   };
 
+  // Get user ID from localStorage
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const userID = userInfo ? userInfo._id : "";
+
   return (
     <nav className="navbar">
       <div className="nav-wrapper">
@@ -58,6 +62,12 @@ const Navbar = () => {
               {/* <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label> */}
               <i className="material-icons">close</i>
             </div>
+          </li>
+          <li>
+            {/* Navigate to user page with dynamic user ID */}
+            <Link to={`/user/${userID}`} className="nav-link">
+              User
+            </Link>
           </li>
           <li>
             <a onClick={handleLogout} className="nav-link">
