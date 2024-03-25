@@ -221,13 +221,16 @@ const TokenList = (walletAddress) => {
                   className="plotly-chart"
                   data={generateChartData()}
                   layout={{
-                    width: 800,
-                    height: 500,
+                    width: 450,
+                    height: 400,
                     title: "Token Distribution by Type and Network",
                     barmode: "stack",
                     xaxis: { title: "Network" },
                     yaxis: { title: "Number of Tokens" },
+                    plot_bgcolor: 'rgba(137, 113, 208, 0.1)',
+                    paper_bgcolor: 'rgba(137, 113, 208, 0.1)',
                   }}
+                  config={{ displayModeBar: false }}
                 />
               </div>
             )}

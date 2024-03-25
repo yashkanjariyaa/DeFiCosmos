@@ -32,7 +32,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-wrapper">
-        <ul className="right hide-on-med-and-down">
+        <ul className="nav-links">
           <li>
             <Link to="/home" className="nav-link">
               Home
@@ -52,10 +52,10 @@ const Navbar = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 required
               />
-              <button onClick={handleSearch}>Search</button>
-              <label className="label-icon" htmlFor="search">
-                <i className="material-icons">search</i>
-              </label>
+              <button className="search-button" onClick={handleSearch}>
+                Search
+              </button>
+              {/* <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label> */}
               <i className="material-icons">close</i>
             </div>
           </li>
