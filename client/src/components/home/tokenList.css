@@ -1,6 +1,7 @@
 /* Flip Card */
 
 .crypto-portfolio-container {
+  margin-top: 200px;
   display: flex;
   
 }
@@ -27,20 +28,32 @@
   width: 100%;
   height: 100%;
   color: #fff;
-  background-color: #000;
+  background-color: #000000;
   position: absolute;
   backface-visibility: hidden;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+.flip-card-front, .flip-card-back h2{
+  font-weight: 700;
+  font-size: 20px;
+}
 
 .flip-card-back {
-  background: linear-gradient(to bottom right, #181505, #1c1b37);
+  background:   rgba(137, 113, 208, 0.1);;
   color: #fff;
   transform: rotateY(180deg);
+}
+
+.refresh-button{
+  background-color: #fff;
+  height: 50px;
+  border-radius: 10px;
+  color: #000000;
+  width: 300px;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import "./network.css";
-
+import { useNavigate } from "react-router-dom";
 const OptimismSystem = () => {
     const navigate = useNavigate();
     const navigateToChats = () => {

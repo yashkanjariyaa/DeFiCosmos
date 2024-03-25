@@ -45,11 +45,11 @@ const WalletContactComponent = (props) => {
         <div className="bento-grid">
           <div className="remaining-info" id="item-0">
             <h3>Twitter Handle:</h3>
-            <p>{data.twitterHandle}</p>
+            <p>{data.twitterHandle ? data.twitterHandle : "None"}</p>
           </div>
           <div className="remaining-info" id="item-1">
             <h3>Email:</h3>
-            <p>{data.email}</p>
+            <p>{data.email ? data.email : "None"}</p>
           </div>
           <div className="remaining-info" id="item-2">
             <h3>Telegram Handle:</h3>

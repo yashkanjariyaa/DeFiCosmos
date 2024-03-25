@@ -72,7 +72,7 @@ const UserProfile = () => {
       }
     }
   
-    // Call the function to create stars and asteroids
+    
     createStarsAndAsteroids(100);
   }, [])
   console.log(userAddress);
