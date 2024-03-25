@@ -3,7 +3,7 @@
 
 # DeFi Cosmos
 
-DeFi Cosmos is a community platform designed for blockchain enthusiasts where users can connect, share insights, and explore various aspects of decentralized finance (DeFi). DeFi Cosmos integrates Metamask authentication and provides users with personalized profiles showcasing essential metrics and information about their wallets.
+DeFi Cosmos is a space-themed community platform designed for blockchain enthusiasts where users can connect, share insights, and explore various aspects of decentralized finance (DeFi). DeFi Cosmos integrates Metamask authentication and provides users with personalized profiles showcasing essential metrics and information about their wallets.
 
 ## Features
 
@@ -60,6 +60,9 @@ To get started with DeFi Cosmos, follow these steps:
 ## Credits
 This project was developed as part of the Blaze API Hackathon, utilizing the Blaze API for various functionalities.
 All the Wallet Intelligence and Identity APIs are used for this project.
+
+## Demo Link
+https://drive.google.com/file/d/1AeiB5B9qsDtU6Dx524WUS2GgeJhYhSmH/view?usp=sharing
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
