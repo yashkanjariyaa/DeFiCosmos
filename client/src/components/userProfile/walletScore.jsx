@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Plot from 'react-plotly.js';
 
-function WalletScores() {
+function WalletScores({ walletAddress }) {
   const [scores, setScores] = useState(null);
   const [error, setError] = useState(null);
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -25,7 +25,7 @@ function WalletScores() {
               }
             `,
             variables: {
-              walletAddress: "0x690B9A9E9aa1C9dB991C7721a92d351Db4FaC990",
+              walletAddress: walletAddress,
             },
           }),
         });
@@ -42,7 +42,7 @@ function WalletScores() {
     };
 
     fetchScores();
-  }, []);
+  }, [walletAddress, apiKey]);
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -53,52 +53,40 @@ function WalletScores() {
   }
 
   return (
-    // <div>
-    //   <h2>Wallet Scores</h2>
-    //   <p>Web3 Reputation Score: {scores.web3ReputationScore}</p>
-    //   <p>Authenticity Score: {scores.authenticityScore}</p>
-    // </div>
-
-
     <div>
-    {/* <h2>Wallet Scores</h2>
-    <p>Web3 Reputation Score: {scores.web3ReputationScore}</p>
-    <p>Authenticity Score: {scores.authenticityScore}</p> */}
-    
-    <Plot
-      data={[
-        {
-          x: ['Web3 Reputation', 'Authenticity'],
-          y: [scores.web3ReputationScore, scores.authenticityScore],
-          type: 'bar',
-          marker: { color: '#fafa6e' }, 
-          text: [scores.web3ReputationScore, scores.authenticityScore],// Bar color
-          hoverinfo: 'none', // Hide hover info
-          textposition: 'auto',
-        },
-        {
-          x: ['Web3 Reputation', 'Authenticity'],
-          y: [100, 100],
-          type: 'scatter',
-          mode: 'lines',
-          line: { color: 'red', dash: 'dash' }, // Horizontal line style
-          name: 'Max Score',
-          showlegend: false, // Hide legend for the horizontal line
-        },
-      ]}
-      layout={{
-        title: `<span style="color: white;">Wallet Scores</span>`,
-        xaxis: { title:  `<span style="color: white;">Score Type</span>` },
-        yaxis: { title:  `<span style="color: white;">Score</span>`, range: [0, 100 + 10] }, // Y-axis range
-        barmode: 'group', // Display bars side by side
-        plot_bgcolor: 'rgba(137, 113, 208, 0.1)',
+      <Plot
+        data={[
+          {
+            x: ['Web3 Reputation', 'Authenticity'],
+            y: [scores.web3ReputationScore, scores.authenticityScore],
+            type: 'bar',
+            marker: { color: '#fafa6e' }, 
+            text: [scores.web3ReputationScore, scores.authenticityScore],
+            hoverinfo: 'none',
+            textposition: 'auto',
+          },
+          {
+            x: ['Web3 Reputation', 'Authenticity'],
+            y: [100, 100],
+            type: 'scatter',
+            mode: 'lines',
+            line: { color: 'red', dash: 'dash' },
+            name: 'Max Score',
+            showlegend: false,
+          },
+        ]}
+        layout={{
+          title: `<span style="color: white;">Wallet Scores</span>`,
+          xaxis: { title:  `<span style="color: white;">Score Type</span>` },
+          yaxis: { title:  `<span style="color: white;">Score</span>`, range: [0, 100 + 10] },
+          barmode: 'group',
+          plot_bgcolor: 'rgba(137, 113, 208, 0.1)',
           paper_bgcolor: 'rgba(137, 113, 208, 0.1)',
-      }}
-      style={{ width: '400px', height: '300px' }}
-      config={{ displayModeBar: false }}
-    />
-  </div>
-
+        }}
+        style={{ width: '400px', height: '300px' }}
+        config={{ displayModeBar: false }}
+      />
+    </div>
   );
 }
 

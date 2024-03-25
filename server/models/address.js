@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const addressSchema = new mongoose.Schema({
-  _id: {
-    type: String,
+  userInfo: {
+    type: Object,
     required: true
   },
   address: {

@@ -6,6 +6,8 @@ const { connectToMongoDB } = require("./config");
 const { userRoutes, chatRoutes, messageRoutes, dataRoutes } = require("./routes");
 const { notFound, errorHandler } = require("./middleware");
 const searchController = require("./controllers/searchController");
+const storeWalletController = require("./controllers/storeWalletController");
+const getUserInfoAndAddress = require("./controllers/getUserInfoAddressController");
 const app = express(); // Use express js in our app
 app.use(express.json()); // Accept JSON data
 dotenv.config(); // Specify a custom path if your file containing environment variables is located elsewhere
@@ -16,6 +18,8 @@ app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
 app.use("/api/store", dataRoutes);
 app.get("/api/search", searchController);
+app.post("/api/storeWallet", storeWalletController);
+app.get("/api/getUser", getUserInfoAndAddress);
 
 // --------------------------DEPLOYMENT------------------------------
 

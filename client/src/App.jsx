@@ -79,7 +79,7 @@ const App = () => {
           <Route path="/base" element={<BaseSystem />} />
           <Route path="/optimism" element={<OptimismSystem />} />
           <Route path="/ethereum" element={<EthereumSystem />} />
-          <Route path="/user" element={<UserProfile />} />
+          <Route path="/user/:id" element={<UserProfile />} />
           {/* If the user enters an invalid path in the URL it automatically redirects them to the homepage */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

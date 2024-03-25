@@ -6,6 +6,7 @@ function WalletTraitsComponent({ walletAddress }) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const apiKey = import.meta.env.VITE_API_KEY;
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -70,7 +71,7 @@ function WalletTraitsComponent({ walletAddress }) {
         }
 
         fetchData();
-    }, [walletAddress]);
+    }, [walletAddress, apiKey]);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;

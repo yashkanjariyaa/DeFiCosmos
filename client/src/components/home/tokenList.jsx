@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import Plot from "react-plotly.js";
 import "./tokenList.css"; // Import CSS file for component styles
 
-const TokenList = () => {
+const TokenList = (walletAddress) => {
   const [portfolioData, setPortfolioData] = useState(null);
   const [walletHoldings, setWalletHoldings] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [expandedNetwork, setExpandedNetwork] = useState(null); // Track expanded network
-  const walletAddress = "0x690B9A9E9aa1C9dB991C7721a92d351Db4FaC990";
   const apiKey = import.meta.env.VITE_API_KEY;
 
   // const storeHoldings = (data) => {

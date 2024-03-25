@@ -28,15 +28,17 @@ const Wallet = () => {
     getProvider();
   }, []);
   const storeWallet = (address) => {
+    const data = {
+      userInfo: localStorage.getItem("userInfo"),
+      address: address,
+    }
+    console.log(data);
     fetch("/server/api/storeWallet", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        userId: localStorage.getItem('userInfo')._id,
-        address: address,
-      }),
+      body: JSON.stringify(data),
     })
       .then((response) => {
         if (!response.ok) {

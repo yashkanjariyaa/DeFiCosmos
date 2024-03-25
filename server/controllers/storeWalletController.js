@@ -1,15 +1,12 @@
 const Address = require('../models/address');
 
-exports.updateAddress = async (req, res) => {
+const storeWalletController = async (req, res) => {
     try {
-      const { userId, address } = req.body;
-  
+      const { userInfo, address } = req.body;
       // Create new address document
       const newAddress = new Address({
-        userId: userId,
-        street: address.street,
-        city: address.city,
-        country: address.country
+        userInfo: userInfo,
+        address : address
       });
   
       // Save address to database
@@ -21,3 +18,4 @@ exports.updateAddress = async (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
     }
   };
+module.exports = storeWalletController;
