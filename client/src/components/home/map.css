@@ -10,23 +10,24 @@
   flex-direction: column;
   align-items: center;
 }
-.sub-container{
-    position: relative;
-    height: 100%;
-    width: 100%;
+.sub-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
-.planets, .sun{
-  position: absolute;
-}
-.system-container{
+.system-container {
   position: relative;
 }
-#polygon-button{
+.planets,
+.sun {
+  position: absolute;
+}
+#polygon-button {
   position: absolute;
   top: 15%;
   left: 15%;
 }
-#ethereum-button{
+#ethereum-button {
   position: absolute;
   top: 40%;
   left: 45%;
@@ -42,34 +43,53 @@
   background-color: #ffffff00;
   z-index: 4;
 } */
-#bsc-button{
+#bsc-button {
   position: absolute;
   top: 20%;
   left: 80%;
 }
-#base-button{
+#base-button {
   position: absolute;
   top: 60%;
   left: 20%;
 }
-#arbitrum-button{
+#arbitrum-button {
   position: absolute;
   top: 70%;
   left: 80%;
 }
-#optimism-button{
+#optimism-button {
   position: absolute;
   top: 10%;
   left: 60%;
 }
 
 .vertical-navigation {
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-  }
-  
-  .vertical-navigation button {
-    margin-bottom: 10px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.vertical-navigation button {
+  margin-bottom: 10px;
+}
+.button-label {
+  position: absolute;
+  top: calc(100% + 5px); /* Adjust the distance from the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(72, 94, 219, 0.8);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 22px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 5;
+}
+
+.nav-button:hover .button-label {
+  visibility: visible;
+  opacity: 1;
+}

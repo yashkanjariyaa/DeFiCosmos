@@ -95,7 +95,6 @@ const Ethereum = () => {
   return (
     <div className="system-container" style={containerStyle}>
       <div className="ethereum-sun sun" ref={sun} style={sunStyle}></div>
-      <div className="ethereum-ring"></div>
       <div
         className="ethereum-planets planets"
         ref={planet[0]}

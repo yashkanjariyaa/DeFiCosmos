@@ -1,11 +1,14 @@
 import React from "react";
 import "./network.css";
-import LeaderboardCard from "../../components/network/portfolioLeaderboard";
 const BSCSystem = () => {
+    const navigate = useNavigate();
+    const navigateToChats = () => {
+        navigate("/chats"); // Navigate to /chats route
+    };
     return(
         <div className="network-body">
             <div className="bsc-sun"></div>
-            <LeaderboardCard/>
+            <button className="navigate-button" onClick={navigateToChats}>Go to text channel</button>
         </div>
     );
 }
