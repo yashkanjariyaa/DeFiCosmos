@@ -25,7 +25,6 @@ const UserProfile = () => {
         console.log("User Info:", data.userInfoObject);
         setUserData(data.userInfoObject);
         setUserAddress(data.userInfoAndAddressObject.address);
-        console.log(userAddress);
         // Ensure data.address is a string before setting userAddress
         // if (typeof data.address === "string") {
         //   setUserAddress(data.address);
@@ -76,6 +75,8 @@ const UserProfile = () => {
     // Call the function to create stars and asteroids
     createStarsAndAsteroids(100);
   }, [])
+  console.log(userAddress);
+  console.log(typeof(userAddress));
   return (
     <div className="user-profile">
       {userData ? (

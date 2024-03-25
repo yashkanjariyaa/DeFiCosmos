@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import "./walletSocial.css";
 
-const WalletContactComponent = ({ walletAddress }) => {
+const WalletContactComponent = (props) => {
+  const {walletAddress} = props;
   const [data, setData] = useState(null);
   const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -25,7 +26,7 @@ const WalletContactComponent = ({ walletAddress }) => {
             }
           `,
           variables: {
-            "walletAddress": walletAddress
+            walletAddress: walletAddress
           }
         })
       });

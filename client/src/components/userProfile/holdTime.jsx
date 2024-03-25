@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import "./holdtime.css";
 
-const TokenHoldTimeVisualizer = ({ walletAddress }) => {
+function TokenHoldTimeVisualizer(props){
+  const {walletAddress} = props;
   console.log(walletAddress);
   const [averageHoldTime, setAverageHoldTime] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -31,7 +32,6 @@ const TokenHoldTimeVisualizer = ({ walletAddress }) => {
             }
           })
         });
-
         const data = await response.json();
         if (data.errors) {
           throw new Error(data.errors[0].message);

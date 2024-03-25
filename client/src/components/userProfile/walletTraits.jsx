@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import "./wallettraits.css";
 
-function WalletTraitsComponent({ walletAddress }) {
+function WalletTraitsComponent(props) {
+    const {walletAddress} = props;
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);

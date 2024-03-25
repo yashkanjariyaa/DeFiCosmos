@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Plot from 'react-plotly.js';
 
-function WalletScores({ walletAddress }) {
+function WalletScores(props) {
+  const {walletAddress} = props;
   const [scores, setScores] = useState(null);
   const [error, setError] = useState(null);
   const apiKey = import.meta.env.VITE_API_KEY;
-
+  // const walletAddress = import.meta.env.VITE_WALLET; 
   useEffect(() => {
     const fetchScores = async () => {
       try {
