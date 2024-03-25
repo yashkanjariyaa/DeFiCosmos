@@ -37,6 +37,7 @@ const WalletContactComponent = (props) => {
 
     fetchData();
   }, [walletAddress, apiKey]);
+  
 
   return (
     <div className="wallet-social-container">
