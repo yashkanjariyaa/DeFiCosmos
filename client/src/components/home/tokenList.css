@@ -2,15 +2,13 @@
 
 .crypto-portfolio-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  
 }
 
 .flip-card {
   perspective: 1000px;
   margin: 20px;
-  width: 300px; /* Adjust the width of the flip cards as needed */
+  width: 450px; /* Adjust the width of the flip cards as needed */
   height: 400px; /* Adjust the height of the flip cards as needed */
 }
 
