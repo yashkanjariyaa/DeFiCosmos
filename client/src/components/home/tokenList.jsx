@@ -71,9 +71,9 @@ const TokenList = ({walletAddress}) => {
               }
             }
           `,
-            variables: {
-              walletAddress: walletAddress,
-            },
+          variables: {
+            "walletAddress": String(walletAddress),
+          },
           }),
         }
       );

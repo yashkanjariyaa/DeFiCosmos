@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 function SmartContractsList({ walletAddress, lastNDays }) {
+  
+
   const [allData, setAllData] = useState([]);
   const [contracts, setContracts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -27,8 +29,8 @@ function SmartContractsList({ walletAddress, lastNDays }) {
               }
             `,
             variables: {
-              walletAddress: walletAddress,
-              lastNDays: lastNDays
+              "walletAddress": String(walletAddress),
+              "lastNDays": lastNDays,
             }
           })
         });

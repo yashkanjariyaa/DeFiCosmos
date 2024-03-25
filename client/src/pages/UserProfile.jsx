@@ -25,7 +25,8 @@ const UserProfile = () => {
         console.log("User Info:", data.userInfoObject);
         setUserData(data.userInfoObject);
         setUserAddress(data.userInfoAndAddressObject.address);
-        console.log(userAddress);
+        
+        
         // Ensure data.address is a string before setting userAddress
         // if (typeof data.address === "string") {
         //   setUserAddress(data.address);

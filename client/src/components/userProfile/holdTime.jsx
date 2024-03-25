@@ -27,8 +27,8 @@ const TokenHoldTimeVisualizer = ({ walletAddress }) => {
               }
             `,
             variables: {
-              walletAddress: walletAddress // Use the wallet address passed as prop
-            }
+              "walletAddress": String(walletAddress),
+            },
           })
         });
 

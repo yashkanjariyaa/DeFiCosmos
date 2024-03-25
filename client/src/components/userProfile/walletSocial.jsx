@@ -24,9 +24,7 @@ const WalletContactComponent = ({ walletAddress }) => {
               }
             }
           `,
-          variables: {
-            "walletAddress": walletAddress
-          }
+          variables: JSON.stringify({ walletAddress })
         })
       });
 
@@ -36,6 +34,7 @@ const WalletContactComponent = ({ walletAddress }) => {
 
     fetchData();
   }, [walletAddress, apiKey]);
+  
 
   return (
     <div className="wallet-social-container">

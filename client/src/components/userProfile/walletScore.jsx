@@ -25,7 +25,7 @@ function WalletScores({ walletAddress }) {
               }
             `,
             variables: {
-              walletAddress: walletAddress,
+              "walletAddress": String(walletAddress),
             },
           }),
         });
