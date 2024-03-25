@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import "./scList.css";
 function SmartContractsList({ walletAddress, lastNDays }) {
   
 
@@ -65,9 +65,9 @@ function SmartContractsList({ walletAddress, lastNDays }) {
     } else {
       return (
         <div>
-          <ul>
+          <ul className='list-contracts'>
             {contracts.map(contract => (
-              <li key={contract}>{contract}</li>
+              <li className='list-contracts' key={contract}>{contract}</li>
             ))}
           </ul>
           {showToggle && <button onClick={toggleContracts}>{showAll ? 'Show Less' : 'Show More'}</button>}
@@ -77,7 +77,7 @@ function SmartContractsList({ walletAddress, lastNDays }) {
   };
 
   return (
-    <div>
+    <div className='smartListBox' >
       <h2>Smart Contracts Interacted with by Wallet</h2>
       {renderContracts()}
     </div>

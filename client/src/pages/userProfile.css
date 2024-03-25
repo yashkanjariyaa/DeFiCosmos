@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 .user-profile {
   display: flex;
   flex-direction: column;
@@ -83,6 +84,7 @@
 }
 
 .username {
+  margin-left: -500px;
   font-size: 60px;
   color: #EEFCFF;
 }
@@ -90,6 +92,7 @@
 .followers,
 .following {
   margin-top: 10px;
+  width:600px;
   padding: 10px 20px;
   background-color: #fafa6e;
   color: #000000;
@@ -99,12 +102,24 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .wallet-score{
-  margin-left: -350px;
+  margin-left: -470px;
 }
 .wallet-traits{
+  padding-top: 0;
+  margin-top: -40px;
   margin-left: -250px;
+  width: 450px;
 }
+.wallet-traits h2{
+  margin-bottom: -70px;
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-style: italic;
 
+}
+.portfolio-container{
+  margin-top: -200px;
+}
 .star, .asteroid {
   position: absolute;
   width: 2px; /* Adjust size as needed */

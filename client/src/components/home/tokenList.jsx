@@ -218,9 +218,7 @@ const TokenList = ({walletAddress}) => {
             {/* Content for the back of the card */}
             {walletHoldings && (
               <div>
-                <p className="wallet-address">
-                  Wallet Address: {walletHoldings.walletAddress}
-                </p>
+                
                 <Plot
                   className="plotly-chart"
                   data={generateChartData()}
