@@ -3,7 +3,7 @@ import TokenList from "../home/tokenList";
 import SmartContractsList from "../home/scList";
 import "./portfolio.css";
 
-const Portfolio = (walletAddress) => {
+const Portfolio = ({walletAddress}) => {
     // const wallet = import.meta.env.VITE_WALLET;
     // const navigate = useNavigate();
     // const handleChatButton = () => {

@@ -107,19 +107,22 @@ const TokenList = (walletAddress) => {
 
   const countTokensByTypeAndNetwork = () => {
     if (!walletHoldings) return {};
-
+  
     const counts = {};
-
+  
     ["erc20Tokens", "erc721Tokens", "erc1155Tokens"].forEach((tokenType) => {
-      walletHoldings[tokenType].forEach((token) => {
-        const { chain } = token;
-        counts[tokenType] = counts[tokenType] || {};
-        counts[tokenType][chain] = (counts[tokenType][chain] || 0) + 1;
-      });
+      if (walletHoldings[tokenType]) {
+        walletHoldings[tokenType].forEach((token) => {
+          const { chain } = token;
+          counts[tokenType] = counts[tokenType] || {};
+          counts[tokenType][chain] = (counts[tokenType][chain] || 0) + 1;
+        });
+      }
     });
-
+  
     return counts;
   };
+  
 
   const generateChartData = () => {
     const counts = countTokensByTypeAndNetwork();

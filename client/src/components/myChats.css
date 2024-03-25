@@ -9,18 +9,22 @@
   }
   
   /* Apply the kaleidoscope effect to the chats */
-  .chat-box {
-    background: radial-gradient(circle at center, #000000 0%, #04081b 100%);
+  .chat-item {
+    background: linear-gradient(to bottom, #000000 0%, #04081b 100%);
     animation: kaleidoscope 20s infinite linear;
-  }
+  } 
   
   /* Additional styling for the chat box */
   .chat-item {
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    color: white;
   }
   
   .chat-item:hover {

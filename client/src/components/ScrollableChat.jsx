@@ -1,6 +1,7 @@
 import { Avatar, Tooltip } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import Lottie from "lottie-react";
+import "./scrollableChat.css";
 
 import "../App.css";
 import {
@@ -31,7 +32,7 @@ const ScrollableChat = ({ messages, isTyping }) => {
         {/* If something inside the messages, render the messages */}
         {messages &&
           messages.map((message, index) => (
-            <div ref={scrollRef} key={message._id} className={`message-bubble ${message.sender === user._id ? "sender" : "receiver"}`} style={{ display: "flex" }}>
+            <div ref={scrollRef} key={message._id} style={{ display: "flex" }}>
               {(isSameSender(messages, message, index, user._id) ||
                 isLastMessage(messages, index, user._id)) && (
                 <Tooltip
@@ -50,11 +51,10 @@ const ScrollableChat = ({ messages, isTyping }) => {
                 </Tooltip>
               )}
 
-              <span
+              <span className="message-bubble"
                 style={{
-                  backgroundColor: `${
-                    message.sender._id === user._id ? "#BEE3F8" : "#B9F5D0"
-                  }`,
+                  color: "white",
+                  
                   borderRadius: "20px",
                   padding: "5px 15px",
                   maxWidth: "75%",

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import HoldTime from "../components/userProfile/holdTime";
-import WalletScore from "../components/userProfile/walletScore";
-import WalletSocial from "../components/userProfile/walletSocial";
-import WalletTraits from "../components/userProfile/walletTraits";
+import HoldTime from "../components/userProfile/HoldTime";
+import WalletScore from "../components/userProfile/WalletScore";
+import WalletSocial from "../components/userProfile/WalletSocial";
+import WalletTraits from "../components/userProfile/WalletTraits";
 import { useParams } from "react-router-dom";
 import "./userProfile.css";
 import Portfolio from "../components/portfolio/portfolio";
@@ -75,7 +75,7 @@ const UserProfile = () => {
   
     // Call the function to create stars and asteroids
     createStarsAndAsteroids(100);
-  })
+  }, [])
   return (
     <div className="user-profile">
       {userData ? (
@@ -96,7 +96,7 @@ const UserProfile = () => {
               </div>
             </div>
             <div className="wallet-social">
-              <WalletSocial walletAddress={userAddress} />
+              <WalletSocial  walletAddress={userAddress} />
             </div>
           </div>
         </div>
