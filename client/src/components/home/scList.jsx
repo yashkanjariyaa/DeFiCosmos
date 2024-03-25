@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function SmartContractsList(props) {
   const { walletAddress, lastNDays } = props;
+  const dummyWallet = import.meta.env.VITE_WALLET;
   const [allData, setAllData] = useState([]);
   const [contracts, setContracts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +29,7 @@ function SmartContractsList(props) {
               }
             `,
             variables: {
-              walletAddress: walletAddress,
+              walletAddress: dummyWallet,
               lastNDays: lastNDays
             }
           })

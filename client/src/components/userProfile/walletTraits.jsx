@@ -7,7 +7,7 @@ function WalletTraitsComponent(props) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const apiKey = import.meta.env.VITE_API_KEY;
-
+    const dummyWallet = import.meta.env.VITE_WALLET;
     useEffect(() => {
         async function fetchData() {
             try {
@@ -57,7 +57,7 @@ function WalletTraitsComponent(props) {
                         }
                         `,
                         variables: {
-                            walletAddress: walletAddress
+                            walletAddress: dummyWallet
                         }
                     })
                 });

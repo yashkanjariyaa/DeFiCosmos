@@ -4,7 +4,7 @@ import "./tokenList.css"; // Import CSS file for component styles
 
 const TokenList = (props) => {
   const {walletAddress} = props;
-  console.log(walletAddress);
+  const dummyWallet = import.meta.env.VITE_WALLET;
   const [portfolioData, setPortfolioData] = useState(null);
   const [walletHoldings, setWalletHoldings] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -73,7 +73,7 @@ const TokenList = (props) => {
             }
           `,
             variables: {
-              walletAddress: walletAddress,
+              walletAddress: dummyWallet,
             },
           }),
         }

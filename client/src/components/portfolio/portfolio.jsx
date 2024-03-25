@@ -4,6 +4,7 @@ import SmartContractsList from "../home/scList";
 import "./portfolio.css";
 
 const Portfolio = ({walletAddress}) => {
+  const dummyWallet = import.meta.env.VITE_WALLET;
     console.log(walletAddress);
     // const wallet = import.meta.env.VITE_WALLET;
     // const navigate = useNavigate();

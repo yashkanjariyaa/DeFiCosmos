@@ -8,7 +8,7 @@ function TokenHoldTimeVisualizer(props){
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const apiKey = import.meta.env.VITE_API_KEY;
-
+  const dummyWallet = import.meta.env.VITE_WALLET;
   useEffect(() => {
     const fetchHoldTime = async () => {
       try {
@@ -28,7 +28,7 @@ function TokenHoldTimeVisualizer(props){
               }
             `,
             variables: {
-              walletAddress: walletAddress // Use the wallet address passed as prop
+              walletAddress: dummyWallet // Use the wallet address passed as prop
             }
           })
         });
