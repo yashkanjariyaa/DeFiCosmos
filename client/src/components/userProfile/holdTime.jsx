@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./holdtime.css";
 
 const TokenHoldTimeVisualizer = ({ walletAddress }) => {
+  console.log(walletAddress);
   const [averageHoldTime, setAverageHoldTime] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

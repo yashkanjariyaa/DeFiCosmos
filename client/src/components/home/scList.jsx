@@ -7,7 +7,7 @@ function SmartContractsList({ walletAddress, lastNDays }) {
   const [showAll, setShowAll] = useState(false);
   const [showToggle, setShowToggle] = useState(false);
   const apiKey = import.meta.env.VITE_API_KEY;
-
+  console.log(walletAddress);
   useEffect(() => {
     const fetchContracts = async () => {
       try {

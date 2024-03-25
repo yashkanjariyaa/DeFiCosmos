@@ -7,11 +7,11 @@ const getUserInfoAndAddress = async (req, res) => {
   try {
     // Fetch user by address id
     const userInfoAndAddressObject = await Address.findOne({
-      "userInfo._id": req.params.id,
+      "userID": req.params.id,
     });
     const userInfoObject = await User.findOne({ _id: ObjectId(req.params.id) });
 
-    console.log("user info and object" + userInfoAndAddressObject);
+    console.log("address" + userInfoAndAddressObject);
     console.log("user info" + userInfoObject);
     if (!userInfoAndAddressObject || !userInfoObject) {
       return res

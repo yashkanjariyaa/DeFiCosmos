@@ -1,16 +1,18 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const addressSchema = new mongoose.Schema({
-  userInfo: {
-    type: Object,
-    required: true
+ userID: {
+    type: String,
+    ref: "User",
+    required: true,
+    unique: true
   },
   address: {
     type: String,
-    required: true
+    required: true,
   },
 });
 
-const Address = mongoose.model('Address', addressSchema);
+const Address = mongoose.model("Address", addressSchema);
 
 module.exports = Address;

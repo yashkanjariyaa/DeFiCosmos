@@ -15,7 +15,6 @@ const UserProfile = () => {
   useEffect(() => {
     fetch(`/server/api/getUser/${id}`)
       .then((response) => {
-        console.log(response.json());
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -26,6 +25,7 @@ const UserProfile = () => {
         console.log("User Info:", data.userInfoObject);
         setUserData(data.userInfoObject);
         setUserAddress(data.userInfoAndAddressObject.address);
+        console.log(userAddress);
         // Ensure data.address is a string before setting userAddress
         // if (typeof data.address === "string") {
         //   setUserAddress(data.address);
@@ -87,7 +87,7 @@ const UserProfile = () => {
                 src={userData.imageLink}
                 alt="profile-pic"
               />
-              <h1 className="username">{userData.username}</h1>
+              <h1 className="username">{userData.name}</h1>
               <div className="followers">
                 <p>Followers: {userData.followers}</p>
               </div>
