@@ -12,6 +12,7 @@ const UserProfile = () => {
   const [followings, setFollwings] = useState();
   const [userData, setUserData] = useState();
   const [userAddress, setUserAddress] = useState();
+  const [isFollowing, setIsFollowing] = useState(false);
   const { id } = useParams();
   console.log(id);
   useEffect(() => {
@@ -80,49 +81,95 @@ const UserProfile = () => {
   console.log(typeof userAddress);
   // Follow a user
 
-  const followUser = async () => {
-    try {
-      const response = await fetch("/server/api/follow", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId:JSON.parse(id, localStorage.getItem('userInfo'))._id }),
-      });
+  // const followUser = async () => {
+  //   try {
+  //     const response = await fetch("/server/api/follow", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({userId:id, followerId:JSON.parse(localStorage.getItem('userInfo'))._id }),
+  //     });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message);
-      }
+  //     if (!response.ok) {
+  //       const errorData = await response.json();
+  //       throw new Error(errorData.message);
+  //     }
 
-      const data = await response.json();
-      console.log(data.message); // Success message
-    } catch (error) {
-      console.error(error.message);
-    }
-    try{
-      
+  //     const data = await response.json();
+  //     console.log(data.message); // Success message
+  //     setIsFollowing(true);
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  //   try {
+  //     const response = await fetch('/server/api/followUser', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ userId: JSON.parse(localStorage.getItem('userInfo'))._id, followingId: id })
+  //     });
+
+  //     if (!response.ok) {
+  //       const errorData = await response.json();
+  //       throw new Error(errorData.message);
+  //     }
+
+  //     const data = await response.json();
+  //     setMessage(data.message);
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // };
+  // const unfollowUser = async () => {
+  //   try {
+  //     const response = await fetch('/server/api/unfollow', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ userId, followingId })
+  //     });
+
+  //     if (!response.ok) {
+  //       const errorData = await response.json();
+  //       throw new Error(errorData.message);
+  //     }
+
+  //     const data = await response.json();
+  //     setMessage(data.message);
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // };
+
+  // useEffect(()=>{
+  //   const getNumberOfFollowers = async (userId) => {
+  //     try {
+  //       const response = await fetch(`/server/api/followers/${id}`);
+    
+  //       if (!response.ok) {
+  //         const errorData = await response.json();
+  //         throw new Error(errorData.message);
+  //       }
+    
+  //       const data = await response.json();
+  //       setFollowers(data.numberOfFollowers);
+  //       console.log(`Number of followers: ${data.numberOfFollowers}`);
+  //     } catch (error) {
+  //       console.error(error.message);
+  //     }
+  //   };
+  //   getNumberOfFollowers();
+  // },[]);
+  const handleToggle = () => {
+    if (isFollowing) {
+      unfollowUser();
+    } else {
+      followUser();
     }
   };
-  useEffect(()=>{
-    const getNumberOfFollowers = async (userId) => {
-      try {
-        const response = await fetch(`/followers/${id}`);
-    
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message);
-        }
-    
-        const data = await response.json();
-        setFollowers(data.numberOfFollowers);
-        console.log(`Number of followers: ${data.numberOfFollowers}`);
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
-    getNumberOfFollowers();
-  },[]);
   return (
     <div className="user-profile">
       {userData ? (
@@ -136,19 +183,19 @@ const UserProfile = () => {
               />
               <h1 className="username">{userData.name}</h1>
               <div className="followers">
-                <p>{followers}</p>
+                {/* <p>{followers}</p> */}
               </div>
               <div className="following">
-              <p>{followings}</p>
+              {/* <p>{followings}</p> */}
               </div>
-              <div>
+              {/* <div>
                 <button
                   style={{ color: "white" }}
-                  onClick={followUser}
+                  onClick={handleToggle}
                 >
-                  Follow!
+                 {isFollowing ? 'Unfollow' : 'Follow'}
                 </button>
-              </div>
+              </div> */}
             </div>
             <div className="wallet-social">
               <WalletSocial walletAddress={userAddress} />

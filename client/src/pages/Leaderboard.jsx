@@ -6,45 +6,53 @@ function Leaderboard() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchTopPerformers = async () => {
-      try {
-        // Fetch top performers based on wallet score
-        const walletScoreResponse = await fetch(
-          "/server/api/leaderboardWalletScore",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
+    const fetchTopPerformers = () => {
+      // Fetch top performers based on wallet score
+      fetch("/server/api/leaderboardWalletScore", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch wallet score leaderboard");
           }
-        );
-        if (!walletScoreResponse.ok) {
-          throw new Error("Failed to fetch wallet score leaderboard");
-        }
-        const walletScoreData = await walletScoreResponse.json();
-        setTopWalletScoreUsers(walletScoreData);
-
-        // Fetch top performers based on portfolio values
-        const portfolioValuesResponse = await fetch(
-          "/server/api/leaderboardPortfolioValues",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        if (!portfolioValuesResponse.ok) {
-          throw new Error("Failed to fetch portfolio values leaderboard");
-        }
-        const portfolioValuesData = await portfolioValuesResponse.json();
-        setTopPortfolioValuesUsers(portfolioValuesData);
-      } catch (error) {
-        setError(error.message);
-      }
+          return response.json();
+        })
+        .then((walletScoreData) => {
+          console.log(walletScoreData);
+          setTopWalletScoreUsers(walletScoreData);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     };
 
+    const fetchTopPortfolios = () => {
+      fetch("/server/api/leaderboardPortfolioValues", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch portfolio values leaderboard");
+          }
+          return response.json();
+        })
+        .then((portfolioValuesData) => {
+          console.log(portfolioValuesData);
+          setTopPortfolioValuesUsers(portfolioValuesData);
+        })
+        .catch((error) => {
+          setError(error.message);
+        });
+    }
+
     fetchTopPerformers();
+    fetchTopPortfolios();
   }, []);
 
   if (error) {
@@ -57,7 +65,7 @@ function Leaderboard() {
       <ul>
         {topWalletScoreUsers.map((user, index) => (
           <li key={index}>
-            {user.name} - Wallet Score: {user.walletScore}
+            {user.userID} - Wallet Score: {user.walletScore}
           </li>
         ))}
       </ul>

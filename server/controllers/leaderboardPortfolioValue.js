@@ -29,7 +29,7 @@ async function getTop5PortfolioValues(req, res) {
         $limit: 5
       }
     ]);
-
+    console.log(top5PortfolioValues);
     res.json(top5PortfolioValues);
   } catch (err) {
     res.status(500).json({ message: err.message });

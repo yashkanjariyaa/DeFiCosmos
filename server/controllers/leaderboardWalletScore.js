@@ -22,7 +22,7 @@ async function getTop5WalletScores(req, res) {
         $limit: 5
       }
     ]);
-
+    console.log(top5WalletScores);
     res.json(top5WalletScores);
   } catch (err) {
     res.status(500).json({ message: err.message });
