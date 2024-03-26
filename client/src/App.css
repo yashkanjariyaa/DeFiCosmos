@@ -68,13 +68,13 @@ body, html {
   }
   
   .app-container {
-   
     background: radial-gradient(circle, #050213, #0d0422, #020205, #080819);
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
   }
   
   .star, .asteroid {
@@ -91,8 +91,9 @@ body, html {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
     background-color: #000000; /* Background color of the space */
   }
 

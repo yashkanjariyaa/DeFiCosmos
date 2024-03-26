@@ -72,7 +72,7 @@ const UserProfile = () => {
       }
     }
   
-    // Call the function to create stars and asteroids
+    
     createStarsAndAsteroids(100);
   }, [])
   console.log(userAddress);
@@ -90,10 +90,10 @@ const UserProfile = () => {
               />
               <h1 className="username">{userData.name}</h1>
               <div className="followers">
-                <p>Followers: {userData.followers}</p>
+                <p>Followers: 23</p>
               </div>
               <div className="following">
-                <p>Following: {userData.following}</p>
+                <p>Following: 45</p>
               </div>
             </div>
             <div className="wallet-social">

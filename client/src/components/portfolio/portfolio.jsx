@@ -4,6 +4,7 @@ import SmartContractsList from "../home/scList";
 import "./portfolio.css";
 
 const Portfolio = ({walletAddress}) => {
+  const dummyWallet = import.meta.env.VITE_WALLET;
     console.log(walletAddress);
     // const wallet = import.meta.env.VITE_WALLET;
     // const navigate = useNavigate();
@@ -13,9 +14,10 @@ const Portfolio = ({walletAddress}) => {
     return(
         <div className="portfolio-container">
             <div className="content">
-                <h2 className="wallet-address">{walletAddress}</h2>
-                <TokenList walletAddress={walletAddress}/>
-                <SmartContractsList walletAddress={walletAddress} lastNDays={90}/>
+                
+            <TokenList className="tokenList" walletAddress={walletAddress}/>
+                <SmartContractsList className="smartList" walletAddress={walletAddress} lastNDays={90}/>
+                
                 {/* <button onClick={handleChatButton}>Chat</button> */}
             </div>
         </div>

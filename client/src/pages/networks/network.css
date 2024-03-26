@@ -15,8 +15,6 @@
     width: 70vw;
     border-radius: 100%;
     position: absolute;
-    bottom: -50%;
-    left: 15%;
 }
 .ethereum-sun{
     background: linear-gradient(to right, #E6155E ,#F27E18);
@@ -24,8 +22,6 @@
     width: 70vw;
     border-radius: 100%;
     position: absolute;
-    bottom: -50%;
-    left: 15%;
 }
 .base-sun{
     background: linear-gradient(to right, #F9C58D ,#F492F0);
@@ -33,8 +29,6 @@
     width: 70vw;
     border-radius: 100%;
     position: absolute;
-    bottom: -50%;
-    left: 15%;
 }
 .bsc-sun{
     background: linear-gradient(to right, #ff930f ,#fff95b);
@@ -42,8 +36,6 @@
     width: 70vw;
     border-radius: 100%;
     position: absolute;
-    bottom: -50%;
-    left: 15%;
 }
 .optimism-sun{
     background: linear-gradient(to right, #f5e6ad ,#f5e6ad);
@@ -51,8 +43,6 @@
     width: 70vw;
     border-radius: 100%;
     position: absolute;
-    bottom: -50%;
-    left: 15%;
 }
 .polygon-sun{
     background: linear-gradient(to right, #ff5282 ,#f28367);
@@ -60,8 +50,34 @@
     width: 70vw;
     border-radius: 100%;
     position: absolute;
-    bottom: -50%;
-    left: 15%;
 }
 
+.network-body {
+    position: relative;
+    height: 100vh; /* Ensure full viewport height */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+.arbitrum-sun {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Add your other styling for the sun */
+}
+
+.navigate-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+    background-color: #427ae2;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    /* Add your other styling for the button */
+}
 

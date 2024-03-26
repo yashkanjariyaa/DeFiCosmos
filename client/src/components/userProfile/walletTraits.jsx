@@ -34,7 +34,7 @@ function WalletTraitsComponent(props) {
             // Handle error
             console.error("There was a problem updating the portfolio values:", error);
           });
-      };
+      };    const dummyWallet = import.meta.env.VITE_WALLET;
     useEffect(() => {
         async function fetchData() {
             try {
@@ -84,7 +84,7 @@ function WalletTraitsComponent(props) {
                         }
                         `,
                         variables: {
-                            walletAddress: walletAddress
+                            walletAddress: dummyWallet
                         }
                     })
                 });
@@ -118,31 +118,34 @@ function WalletTraitsComponent(props) {
 
     return (
         <div className="wallet-details">
-        <h2 style={{ marginBottom: '10px' }}>Wallet Address: {data.walletAddress}</h2>
-        <div className="wallet-tags">
-          <h3>Wallet Tags:</h3>
-          <ul>
-            {Object.keys(data.walletTags).map((tagType) => (
-              <li key={tagType}>
-                <strong>{tagType}:</strong> {data.walletTags[tagType].join(', ')}
-              </li>
-            ))}
-          </ul>
+            <h2 style={{ marginBottom: '10px' }}>Wallet Address: {data.walletAddress}</h2>
+            {data.walletTags && Object.keys(data.walletTags).length > 0 ? (
+                <div className="wallet-tags">
+                    <h3>Wallet Tags:</h3>
+                    <ul>
+                        {Object.keys(data.walletTags).map((tagType) => (
+                            <li key={tagType}>
+                                <strong>{tagType}:</strong> {data.walletTags[tagType].join(', ')}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ) : (
+                <p>No wallet tags found.</p>
+            )}
+            <div className="portfolio-values">
+                <h3>Portfolio Values:</h3>
+                <ul>
+                    <li>Ethereum: {data.ethereumTokenPortfolioValue}</li>
+                    <li>Polygon: {data.polygonTokenPortfolioValue}</li>
+                    <li>NFT: {data.nftPortfolioValue}</li>
+                    <li>Arbitrum: {data.arbitrumTokenPortfolioValue}</li>
+                    <li>BSC: {data.bscTokenPortfolioValue}</li>
+                    <li>Base: {data.baseTokenPortfolioValue}</li>
+                    <li>Optimism: {data.optimismTokenPortfolioValue}</li>
+                </ul>
+            </div>
         </div>
-        <div className="portfolio-values">
-          <h3>Portfolio Values:</h3>
-          <ul>
-            <li>Ethereum: {data.ethereumTokenPortfolioValue}</li>
-            <li>Polygon: {data.polygonTokenPortfolioValue}</li>
-            <li>NFT: {data.nftPortfolioValue}</li>
-            <li>Arbitrum: {data.arbitrumTokenPortfolioValue}</li>
-            <li>BSC: {data.bscTokenPortfolioValue}</li>
-            <li>Base: {data.baseTokenPortfolioValue}</li>
-            <li>Optimism: {data.optimismTokenPortfolioValue}</li>
-          </ul>
-        </div>
-      </div>
-      
     );
 }
 

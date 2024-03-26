@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
-function SmartContractsList(props) {
-  const { walletAddress, lastNDays } = props;
+import "./scList.css";
+function SmartContractsList({ walletAddress, lastNDays }) {
   const [allData, setAllData] = useState([]);
   const [contracts, setContracts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -64,9 +63,9 @@ function SmartContractsList(props) {
     } else {
       return (
         <div>
-          <ul>
+          <ul className='list-contracts'>
             {contracts.map(contract => (
-              <li key={contract}>{contract}</li>
+              <li className='list-contracts' key={contract}>{contract}</li>
             ))}
           </ul>
           {showToggle && <button onClick={toggleContracts}>{showAll ? 'Show Less' : 'Show More'}</button>}
@@ -76,7 +75,7 @@ function SmartContractsList(props) {
   };
 
   return (
-    <div>
+    <div className='smartListBox' >
       <h2>Smart Contracts Interacted with by Wallet</h2>
       {renderContracts()}
     </div>

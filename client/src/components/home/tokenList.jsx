@@ -4,7 +4,8 @@ import "./tokenList.css"; // Import CSS file for component styles
 
 const TokenList = (props) => {
   const {walletAddress} = props;
-  console.log(walletAddress);
+  const dummyWallet = import.meta.env.VITE_WALLET;
+  const [portfolioData, setPortfolioData] = useState(null);
   const [walletHoldings, setWalletHoldings] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [expandedNetwork, setExpandedNetwork] = useState(null); // Track expanded network
@@ -77,7 +78,7 @@ const storeTokenList = (tokenList) => {
             }
           `,
             variables: {
-              walletAddress: walletAddress,
+              walletAddress: dummyWallet,
             },
           }),
         }
@@ -224,9 +225,7 @@ const storeTokenList = (tokenList) => {
             {/* Content for the back of the card */}
             {walletHoldings && (
               <div>
-                <p className="wallet-address">
-                  Wallet Address: {walletHoldings.walletAddress}
-                </p>
+                
                 <Plot
                   className="plotly-chart"
                   data={generateChartData()}

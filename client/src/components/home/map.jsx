@@ -6,7 +6,7 @@ import Arbitrum from "../space/arbitrum";
 import Ethereum from "../space/ethereum";
 import Base from "../space/base";
 import Optimism from "../space/optimism";
-import BSC from "../space/bsc";import "./map.css";
+import BSC from "../space/bsc";
 
 const Map = () => {
   const navigate = useNavigate();
@@ -24,42 +24,48 @@ const Map = () => {
           className="nav-button"
           onClick={() => handleNavigation("/polygon")}
         >
-          <Polygon/>
+          <Polygon />
+          <span className="button-label">Polygon</span>
         </div>
         <div
           id="ethereum-button"
           className="nav-button"
           onClick={() => handleNavigation("/ethereum")}
         >
-          <Ethereum/>
+          <Ethereum />
+          <span className="button-label">Ethereum</span>
         </div>
         <div
           id="bsc-button"
           className="nav-button"
           onClick={() => handleNavigation("/bsc")}
         >
-          <BSC/>
+          <BSC />
+          <span className="button-label">BSC</span>
         </div>
         <div
           id="arbitrum-button"
           className="nav-button"
           onClick={() => handleNavigation("/arbitrum")}
         >
-          <Arbitrum/>
+          <Arbitrum />
+          <span className="button-label">Arbitrum</span>
         </div>
         <div
           id="base-button"
           className="nav-button"
           onClick={() => handleNavigation("/base")}
         >
-          <Base/>
+          <Base />
+          <span className="button-label">Base</span>
         </div>
         <div
           id="optimism-button"
           className="nav-button"
           onClick={() => handleNavigation("/optimism")}
         >
-          <Optimism/>
+          <Optimism />
+          <span className="button-label">Optimism</span>
         </div>
       </div>
     </div>

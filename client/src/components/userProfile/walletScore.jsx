@@ -6,7 +6,7 @@ function WalletScores(props) {
   const [scores, setScores] = useState(null);
   const [error, setError] = useState(null);
   const apiKey = import.meta.env.VITE_API_KEY;
-  // const walletAddress = import.meta.env.VITE_WALLET; 
+  const dummyWallet = import.meta.env.VITE_WALLET;
   const storeScore = (score) => {
     const data = {
       userInfo: localStorage.getItem("userInfo"),
@@ -54,7 +54,7 @@ function WalletScores(props) {
               }
             `,
             variables: {
-              walletAddress: walletAddress,
+              walletAddress: dummyWallet,
             },
           }),
         });
