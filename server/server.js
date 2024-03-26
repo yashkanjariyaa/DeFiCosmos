@@ -33,7 +33,7 @@ app.post("/api/storePortfolioValue", portfolioValueController);
 app.get("/api/leaderboardPortfolioValue", getTop5PortfolioValues);
 app.get("/api/leaderboardWalletScore", getTop5WalletScores);
 app.get("/api/getFollowers/:id", getNumberOfFollowers);
-app.post("/api/updateFollowers", followUser);
+app.post("/api/follow", followUser);
 // --------------------------DEPLOYMENT------------------------------
 
 if (process.env.NODE_ENV === "production") {

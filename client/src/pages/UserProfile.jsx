@@ -8,6 +8,8 @@ import "./userProfile.css";
 import Portfolio from "../components/portfolio/portfolio";
 
 const UserProfile = () => {
+  const [followers, setFollowers] = useState();
+  const [followings, setFollwings] = useState();
   const [userData, setUserData] = useState();
   const [userAddress, setUserAddress] = useState();
   const { id } = useParams();
@@ -80,12 +82,12 @@ const UserProfile = () => {
 
   const followUser = async () => {
     try {
-      const response = await fetch("/follow", {
+      const response = await fetch("/server/api/follow", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId:JSON.parse(localStorage.getItem('userInfo'))._id, followerId }),
+        body: JSON.stringify({ userId:JSON.parse(id, localStorage.getItem('userInfo'))._id }),
       });
 
       if (!response.ok) {
@@ -98,12 +100,29 @@ const UserProfile = () => {
     } catch (error) {
       console.error(error.message);
     }
+    try{
+      
+    }
   };
-
-  // Usage
-  const userId = "user_id_to_follow";
-  const followerId = "current_user_id";
-
+  useEffect(()=>{
+    const getNumberOfFollowers = async (userId) => {
+      try {
+        const response = await fetch(`/followers/${id}`);
+    
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message);
+        }
+    
+        const data = await response.json();
+        setFollowers(data.numberOfFollowers);
+        console.log(`Number of followers: ${data.numberOfFollowers}`);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+    getNumberOfFollowers();
+  },[]);
   return (
     <div className="user-profile">
       {userData ? (
@@ -117,10 +136,10 @@ const UserProfile = () => {
               />
               <h1 className="username">{userData.name}</h1>
               <div className="followers">
-                <p>Followers: 23</p>
+                <p>{followers}</p>
               </div>
               <div className="following">
-                <p>Following: 45</p>
+              <p>{followings}</p>
               </div>
               <div>
                 <button
