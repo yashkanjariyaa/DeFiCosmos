@@ -62,7 +62,7 @@ This project was developed as part of the Blaze API Hackathon, utilizing the Bla
 All the Wallet Intelligence and Identity APIs are used for this project.
 
 ## Demo Link
-https://drive.google.com/file/d/1AeiB5B9qsDtU6Dx524WUS2GgeJhYhSmH/view?usp=sharing
+[Demo Link](https://drive.google.com/file/d/11dsPFx6-iJAx5ykhPWP8kLTM5zwLf2cV/view?usp=sharing)
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
