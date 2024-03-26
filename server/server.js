@@ -13,6 +13,8 @@ const tokenCountController = require("./controllers/tokenCountController");
 const portfolioValueController = require("./controllers/portfolioValueController");
 const {getTop5PortfolioValues} = require("./controllers/leaderboardPortfolioValue");
 const {getTop5WalletScores} = require("./controllers/leaderboardWalletScore");
+const {followUser} = require("./controllers/userFollowerController");
+const {getNumberOfFollowers} = require('./controllers/getNumberOfFollowersController');
 const app = express(); // Use express js in our app
 app.use(express.json()); // Accept JSON data
 dotenv.config(); // Specify a custom path if your file containing environment variables is located elsewhere
@@ -30,6 +32,8 @@ app.post("/api/storeTokenCount", tokenCountController);
 app.post("/api/storePortfolioValue", portfolioValueController);
 app.get("/api/leaderboardPortfolioValue", getTop5PortfolioValues);
 app.get("/api/leaderboardWalletScore", getTop5WalletScores);
+app.get("/api/getFollowers/:id", getNumberOfFollowers);
+app.post("/api/updateFollowers", followUser);
 // --------------------------DEPLOYMENT------------------------------
 
 if (process.env.NODE_ENV === "production") {

@@ -5,7 +5,7 @@ const WalletContactComponent = (props) => {
   const {walletAddress} = props;
   const [data, setData] = useState(null);
   const apiKey = import.meta.env.VITE_API_KEY;
-  const dummyWallet = import.meta.env.VITE_WALLET;
+  const dummyWallet = import.meta.env.VITE_WALLET_2;
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('https://dashboard.withblaze.app/api/graphql-api', {
@@ -32,6 +32,7 @@ const WalletContactComponent = (props) => {
       });
 
       const responseData = await response.json();
+      console.log(responseData.data.walletContacts);
       setData(responseData.data.walletContacts);
     };
 

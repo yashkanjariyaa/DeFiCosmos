@@ -37,46 +37,73 @@ const UserProfile = () => {
       });
   }, [id]);
 
-  useEffect (() =>{
+  useEffect(() => {
     function getRandomNumber(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-  
+
     // Function to generate a random color from an array of colors
     function getRandomColor(colors) {
       return colors[Math.floor(Math.random() * colors.length)];
     }
-  
+
     // Function to create stars and asteroids with random colors
     function createStarsAndAsteroids(numElements) {
       const container = document.querySelector(".stars");
       const colors = ["#FFC0CB", "#FF69B4", "#FFD700", "#FFFF00", "#FFFFFF"]; // Shades of pink, yellow, and white
-  
+
       for (let i = 0; i < numElements; i++) {
         const element = document.createElement("div");
         element.classList.add("element");
-  
+
         // Randomize position and color
         element.style.left = `${getRandomNumber(0, container.offsetWidth)}px`;
         element.style.top = `${getRandomNumber(100, 200)}vh`;
         element.style.backgroundColor = getRandomColor(colors);
-  
+
         // Add class for differentiating between stars and asteroids
         if (Math.random() < 0.5) {
           element.classList.add("star");
         } else {
           element.classList.add("asteroid");
         }
-  
+
         container.appendChild(element);
       }
     }
-  
-    
+
     createStarsAndAsteroids(100);
-  }, [])
+  }, []);
   console.log(userAddress);
-  console.log(typeof(userAddress));
+  console.log(typeof userAddress);
+  // Follow a user
+
+  const followUser = async () => {
+    try {
+      const response = await fetch("/follow", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId:JSON.parse(localStorage.getItem('userInfo'))._id, followerId }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+
+      const data = await response.json();
+      console.log(data.message); // Success message
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  // Usage
+  const userId = "user_id_to_follow";
+  const followerId = "current_user_id";
+
   return (
     <div className="user-profile">
       {userData ? (
@@ -95,9 +122,17 @@ const UserProfile = () => {
               <div className="following">
                 <p>Following: 45</p>
               </div>
+              <div>
+                <button
+                  style={{ color: "white" }}
+                  onClick={followUser}
+                >
+                  Follow!
+                </button>
+              </div>
             </div>
             <div className="wallet-social">
-              <WalletSocial  walletAddress={userAddress} />
+              <WalletSocial walletAddress={userAddress} />
             </div>
           </div>
         </div>
