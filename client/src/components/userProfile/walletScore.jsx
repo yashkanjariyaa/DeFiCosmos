@@ -7,6 +7,34 @@ function WalletScores(props) {
   const [error, setError] = useState(null);
   const apiKey = import.meta.env.VITE_API_KEY;
   const dummyWallet = import.meta.env.VITE_WALLET;
+  const storeScore = (score) => {
+    const data = {
+      userInfo: localStorage.getItem("userInfo"),
+      score: score,
+    }
+    console.log(data);
+    fetch("/server/api/storeScore", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Handle success response
+        console.log("Score updated successfully:", data);
+      })
+      .catch((error) => {
+        // Handle error
+        console.error("There was a problem updating the address:", error);
+      });
+  };
   useEffect(() => {
     const fetchScores = async () => {
       try {
@@ -37,6 +65,7 @@ function WalletScores(props) {
 
         const data = await response.json();
         setScores(data.data.walletScores);
+        storeScore(data.data.walletScores);
       } catch (error) {
         setError('Failed to fetch data');
       }
