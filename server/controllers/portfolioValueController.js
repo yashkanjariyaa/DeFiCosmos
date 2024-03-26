@@ -17,7 +17,7 @@ const PortfolioValueController = async (req, res) => {
       res.status(200).json({ message: "Portofolio updated successfully", score: existingPortfolioValue });
     } else {
       // If address doesn't exist, create a new one
-      const newPortfolioValue = new Score({
+      const newPortfolioValue = new Portfolio({
         userID: userInfo._id,
         portfolioValue: userData.portfolioValue,
       });
