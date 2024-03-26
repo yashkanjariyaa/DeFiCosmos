@@ -13,6 +13,7 @@ import {
   OptimismSystem,
   ArbitrumSystem,
   UserProfile,
+  Leaderboard,
 } from "./pages";
 import "./App.css";
 import Navbar from "./components/navbar";
@@ -80,6 +81,7 @@ const App = () => {
           <Route path="/optimism" element={<OptimismSystem />} />
           <Route path="/ethereum" element={<EthereumSystem />} />
           <Route path="/user/:id" element={<UserProfile />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
           {/* If the user enters an invalid path in the URL it automatically redirects them to the homepage */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

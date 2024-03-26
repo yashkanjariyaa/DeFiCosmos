@@ -27,8 +27,8 @@ function SmartContractsList({ walletAddress, lastNDays }) {
               }
             `,
             variables: {
-              walletAddress: walletAddress,
-              lastNDays: lastNDays
+              "walletAddress": walletAddress,
+              "lastNDays": lastNDays,
             }
           })
         });
