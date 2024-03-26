@@ -13,7 +13,7 @@ function WalletTraitsComponent(props) {
           portfolioValues: portfolioValues,
         }
         console.log(data);
-        fetch("/server/api/storePortfolioValues", {
+        fetch("/server//api/storePortfolioValue", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

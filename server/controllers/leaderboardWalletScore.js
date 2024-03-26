@@ -1,4 +1,4 @@
-const Score = require("../models/Score");
+const Score = require("../models/score");
 
 async function getTop5WalletScores(req, res) {
   try {

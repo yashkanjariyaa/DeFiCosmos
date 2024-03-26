@@ -12,7 +12,7 @@ const PortfolioValueController = async (req, res) => {
     if (existingPortfolioValue) {
       // If address exists, update it
       existingPortfolioValue.portfolioValue = userData.score;
-      await existingScore.save();
+      await existingPortfolioValue.save();
       
       res.status(200).json({ message: "Portofolio updated successfully", score: existingPortfolioValue });
     } else {
