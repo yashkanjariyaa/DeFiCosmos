@@ -8,6 +8,7 @@ const { notFound, errorHandler } = require("./middleware");
 const searchController = require("./controllers/searchController");
 const storeWalletController = require("./controllers/storeWalletController");
 const getUserInfoAndAddress = require("./controllers/getUserInfoAddressController");
+const storeScoreController = require("./controllers/storeScoreController");
 const app = express(); // Use express js in our app
 app.use(express.json()); // Accept JSON data
 dotenv.config(); // Specify a custom path if your file containing environment variables is located elsewhere
@@ -20,7 +21,7 @@ app.use("/api/store", dataRoutes);
 app.get("/api/search", searchController);
 app.post("/api/storeWallet", storeWalletController);
 app.get("/api/getUser/:id", getUserInfoAndAddress);
-
+app.post("/api/storeScore", storeScoreController);
 // --------------------------DEPLOYMENT------------------------------
 
 if (process.env.NODE_ENV === "production") {
