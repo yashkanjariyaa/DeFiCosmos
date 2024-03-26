@@ -32,7 +32,7 @@ function WalletScores(props) {
       })
       .catch((error) => {
         // Handle error
-        console.error("There was a problem updating the address:", error);
+        console.error("There was a problem updating the portfolio values:", error);
       });
   };
   useEffect(() => {

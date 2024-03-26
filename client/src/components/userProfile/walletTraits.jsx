@@ -7,7 +7,34 @@ function WalletTraitsComponent(props) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const apiKey = import.meta.env.VITE_API_KEY;
-
+    const storePortfolioValue = (portfolioValues) => {
+        const data = {
+          userInfo: localStorage.getItem("userInfo"),
+          portfolioValues: portfolioValues,
+        }
+        console.log(data);
+        fetch("/server/api/storePortfolioValues", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            // Handle success response
+            console.log("Portfolio Values updated successfully:", data);
+          })
+          .catch((error) => {
+            // Handle error
+            console.error("There was a problem updating the portfolio values:", error);
+          });
+      };
     useEffect(() => {
         async function fetchData() {
             try {
@@ -64,6 +91,17 @@ function WalletTraitsComponent(props) {
 
                 const responseData = await response.json();
                 setData(responseData.data.walletTraits);
+                const walletTraits = responseData.data.walletTraits;
+                const portfolioValues = {
+                    ethereumTokenPortfolioValue: walletTraits.ethereumTokenPortfolioValue,
+                    polygonTokenPortfolioValue: walletTraits.polygonTokenPortfolioValue,
+                    nftPortfolioValue: walletTraits.nftPortfolioValue,
+                    arbitrumTokenPortfolioValue: walletTraits.arbitrumTokenPortfolioValue,
+                    bscTokenPortfolioValue: walletTraits.bscTokenPortfolioValue,
+                    baseTokenPortfolioValue: walletTraits.baseTokenPortfolioValue,
+                    optimismTokenPortfolioValue: walletTraits.optimismTokenPortfolioValue
+                }
+                storePortfolioValue(portfolioValues);
                 setLoading(false);
             } catch (error) {
                 setError(error);

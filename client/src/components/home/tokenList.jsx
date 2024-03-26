@@ -5,35 +5,39 @@ import "./tokenList.css"; // Import CSS file for component styles
 const TokenList = (props) => {
   const {walletAddress} = props;
   console.log(walletAddress);
-  const [portfolioData, setPortfolioData] = useState(null);
   const [walletHoldings, setWalletHoldings] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [expandedNetwork, setExpandedNetwork] = useState(null); // Track expanded network
   const apiKey = import.meta.env.VITE_API_KEY;
 
-  // const storeHoldings = (data) => {
-  //   fetch("/server/api/store/holdings", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json", // Tell the server that you're sending JSON data
-  //     },
-  //     body: JSON.stringify(data), // Convert the data to a JSON string
-  //   })
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       return response.json(); // Parse the JSON response from the server
-  //     })
-  //     .then((data) => {
-  //       // Handle the response data if needed
-  //       console.log("Data stored successfully:", data);
-  //     })
-  //     .catch((error) => {
-  //       // Handle any errors that occurred during the fetch request
-  //       console.error("Error storing data:", error);
-  //     });
-  // };
+const storeTokenList = (tokenList) => {
+    const data = {
+      userInfo: localStorage.getItem("userInfo"),
+      tokenCount: tokenList,
+    }
+    console.log(data);
+    fetch("/server/api/storeTokenCount", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Handle success response
+        console.log("Token Count updated successfully:", data);
+      })
+      .catch((error) => {
+        // Handle error
+        console.error("There was a problem updating the Tokenlist:", error);
+      });
+  };
 
   const fetchWalletHoldings = async () => {
     setIsLoading(true);
@@ -82,6 +86,7 @@ const TokenList = (props) => {
       const responseData = await response.json();
       console.log(responseData);
       setWalletHoldings(responseData.data.walletHoldings);
+      storeTokenList(responseData.data.walletHoldings)
       // const holdings = {
       //   id: localStorage.getItem('userInfo')._id,
       //   address: localStorage.getItem('walletAddress'),
