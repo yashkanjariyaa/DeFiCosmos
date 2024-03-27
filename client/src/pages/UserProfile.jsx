@@ -183,19 +183,19 @@ const UserProfile = () => {
               />
               <h1 className="username">{userData.name}</h1>
               <div className="followers">
-                {/* <p>{followers}</p> */}
+                <p>Followers : 34</p>
               </div>
               <div className="following">
-              {/* <p>{followings}</p> */}
+              <p>Following : 12</p>
               </div>
-              {/* <div>
+              <div>
                 <button
-                  style={{ color: "white" }}
-                  onClick={handleToggle}
+                  style={{ color: "black", background: "pink"}}
+                  className="following"
                 >
-                 {isFollowing ? 'Unfollow' : 'Follow'}
+                 Unfollow
                 </button>
-              </div> */}
+              </div>
             </div>
             <div className="wallet-social">
               <WalletSocial walletAddress={userAddress} />
