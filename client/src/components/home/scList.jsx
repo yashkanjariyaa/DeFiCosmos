@@ -7,6 +7,7 @@ function SmartContractsList({ walletAddress, lastNDays }) {
   const [showAll, setShowAll] = useState(false);
   const [showToggle, setShowToggle] = useState(false);
   const apiKey = import.meta.env.VITE_API_KEY;
+  const dummyWallet = import.meta.env.VITE_WALLET;
   console.log(walletAddress);
   useEffect(() => {
     const fetchContracts = async () => {
@@ -27,8 +28,8 @@ function SmartContractsList({ walletAddress, lastNDays }) {
               }
             `,
             variables: {
-              "walletAddress": walletAddress,
-              "lastNDays": lastNDays,
+              "walletAddress": String(dummyWallet),
+              "lastNDays": Int(lastNDays),
             }
           })
         });

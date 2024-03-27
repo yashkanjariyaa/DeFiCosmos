@@ -1,11 +1,10 @@
 /* Leaderboard.css */
 
 .container {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
+   height: 200vh;
     width: 900px;
     padding: 10px;
+    
    
   }
   
