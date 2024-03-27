@@ -48,6 +48,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+            <Link to="/leaderboard" className="nav-link">
+              Leaderboard
+            </Link>
+          </li>
+          <li>
             <div className="input-field">
               <input
                 id="search"

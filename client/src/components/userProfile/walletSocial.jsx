@@ -26,7 +26,7 @@ const WalletContactComponent = (props) => {
             }
           `,
           variables: {
-            walletAddress: dummyWallet
+            "walletAddress": String(dummyWallet)
           }
         })
       });

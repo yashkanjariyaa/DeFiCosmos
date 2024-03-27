@@ -183,10 +183,10 @@ const UserProfile = () => {
               />
               <h1 className="username">{userData.name}</h1>
               <div className="followers">
-                {/* <p>{followers}</p> */}
+                <p>Followers</p>
               </div>
               <div className="following">
-              {/* <p>{followings}</p> */}
+              <p>FOLLOWING</p>
               </div>
               {/* <div>
                 <button

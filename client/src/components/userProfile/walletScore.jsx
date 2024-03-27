@@ -1,117 +1,94 @@
-import React, { useState, useEffect } from "react";
-import Plot from "react-plotly.js";
+import React, { useState, useEffect } from 'react';
+import Plot from 'react-plotly.js';
 
-
-function Leaderboard() {
-  const [topWalletScoreUsers, setTopWalletScoreUsers] = useState([]);
-  const [topPortfolioValuesUsers, setTopPortfolioValuesUsers] = useState([]);
+function WalletScores(props) {
+  const {walletAddress} = props;
+  const [scores, setScores] = useState(null);
   const [error, setError] = useState(null);
-
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const dummyWallet = import.meta.env.VITE_WALLET;
   useEffect(() => {
-    const fetchTopPerformers = () => {
-      // Fetch top performers based on wallet score
-      fetch("/server/api/leaderboardWalletScore", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Failed to fetch wallet score leaderboard");
-          }
-          return response.json();
-        })
-        .then((walletScoreData) => {
-          console.log(walletScoreData);
-          setTopWalletScoreUsers(walletScoreData);
-        })
-        .catch((error) => {
-          setError(error.message);
+    const fetchScores = async () => {
+      try {
+        const response = await fetch('https://dashboard.withblaze.app/api/graphql-api', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': apiKey, // Replace 'API Key' with your actual API key
+          },
+          body: JSON.stringify({
+            query: `
+              query WalletScores($walletAddress: String!) {
+                walletScores(walletAddress: $walletAddress) {
+                  web3ReputationScore
+                  authenticityScore
+                }
+              }
+            `,
+            variables: {
+              "walletAddress": dummyWallet,
+            },
+          }),
         });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch');
+        }
+
+        const data = await response.json();
+        setScores(data.data.walletScores);
+      } catch (error) {
+        setError('Failed to fetch data');
+      }
     };
 
-    const fetchTopPortfolios = () => {
-      fetch("/server/api/leaderboardPortfolioValues", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Failed to fetch portfolio values leaderboard");
-          }
-          return response.json();
-        })
-        .then((portfolioValuesData) => {
-          console.log(portfolioValuesData);
-          setTopPortfolioValuesUsers(portfolioValuesData);
-        })
-        .catch((error) => {
-          setError(error.message);
-        });
-    };
+    fetchScores();
+  }, [walletAddress, apiKey]);
 
-    fetchTopPerformers();
-    fetchTopPortfolios();
-  }, []);
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!scores) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div className="container">
-      <div className="graph-container">
-        <h2 className="graph-title">Top 5 Wallet Score Performers</h2>
-        {topWalletScoreUsers.map((performer, index) => (
-          <div key={index}>
-            <h3>{index + 1}. {performer.userID}</h3>
-            <div>
-              <h4>Wallet Score Distribution</h4>
-              <Plot
-                data={[
-                  {
-                    x: ['Web3 Reputation', 'Authenticity'],
-                    y: [performer.score.web3ReputationScore, performer.score.authenticityScore],
-                    type: "bar",
-                    marker: { color: ["blue", "green"] },
-                  },
-                ]}
-                layout={{
-                  width: 400,
-                  height: 300,
-                  title: "Wallet Score Distribution",
-                  paper_bgcolor: 'rgba(137, 113, 208, 0.1)',
-                  plot_bgcolor: 'rgba(137, 113, 208, 0.1)',
-                  font: { color: "white" }
-                }}
-              />
-            </div>
-            <div>
-              <h4>Portfolio Value</h4>
-              <Plot
-                data={[
-                  {
-                    x: ['Portfolio Value'],
-                    y: [performer.totalScore],
-                    type: "bar",
-                    marker: { color: "orange" },
-                  },
-                ]}
-                layout={{
-                  width: 400,
-                  height: 300,
-                  title: "Portfolio Value",
-                  paper_bgcolor: 'rgba(137, 113, 208, 0.1)',
-                  plot_bgcolor: 'rgba(137, 113, 208, 0.1)',
-                  font: { color: "white" }
-                }}
-              />
-            </div>
-          </div>
-        ))}
-        {error && <p>{error}</p>}
-      </div>
+    <div>
+      <Plot
+        data={[
+          {
+            x: ['Web3 Reputation', 'Authenticity'],
+            y: [scores.web3ReputationScore, scores.authenticityScore],
+            type: 'bar',
+            marker: { color: '#fafa6e' }, 
+            text: [scores.web3ReputationScore, scores.authenticityScore],
+            hoverinfo: 'none',
+            textposition: 'auto',
+          },
+          {
+            x: ['Web3 Reputation', 'Authenticity'],
+            y: [100, 100],
+            type: 'scatter',
+            mode: 'lines',
+            line: { color: 'red', dash: 'dash' },
+            name: 'Max Score',
+            showlegend: false,
+          },
+        ]}
+        layout={{
+          title: `<span style="color: white;">Wallet Scores</span>`,
+          xaxis: { title:  `<span style="color: white;">Score Type</span>` },
+          yaxis: { title:  `<span style="color: white;">Score</span>`, range: [0, 100 + 10] },
+          barmode: 'group',
+          plot_bgcolor: 'rgba(137, 113, 208, 0.1)',
+          paper_bgcolor: 'rgba(137, 113, 208, 0.1)',
+        }}
+        style={{ width: '400px', height: '300px' }}
+        config={{ displayModeBar: false }}
+      />
     </div>
   );
 }
 
-export default Leaderboard;
+export default WalletScores;
